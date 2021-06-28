@@ -1,0 +1,28 @@
+@import "./color.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background;
+  color: $title;
+}
+
+body,
+input,
+textarea,
+button {
+  font: 400 1rem "roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

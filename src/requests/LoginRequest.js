@@ -6,7 +6,6 @@ export const login = (body, clear) => {
         axios.post(BASE_URL, body)
         .then((res) => {
             console.log(res.data)
-           
             clear()
         })
         .catch((err) => {
@@ -14,5 +13,3 @@ export const login = (body, clear) => {
         })
 
 }
-
-//

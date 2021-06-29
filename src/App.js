@@ -7,8 +7,8 @@ function App() {
   return (
   //<PostLogin/>
   //<SignUpRequest/>
-  <GetFullAddress/>
-  //<Router />
+  //<GetFullAddress/>
+  <Router />
   );
 }
 

@@ -3,9 +3,12 @@ import { useHistory } from 'react-router-dom';
 import TextInput from '../../components/TextInput/TextInput';
 import useForm from '../../hooks/useForm';
 import { login } from "../../requests/LoginRequest"
+import {gotoRegister} from '../../router/cordination'
 
 
 function LoginPage() {
+    const history = useHistory()
+
     const { body, onChange, clear } = useForm({ email: "", password: "" })
     //const history = useHistory()
     //Desenvolver um formulário e a funcao 'clear' do useForm limpa todos os campos
@@ -39,6 +42,7 @@ function LoginPage() {
                     required />
 
                 <button>Entrar</button>
+                <button onClick={() => gotoRegister(history)}>Cadastre-se</button>
 
             </form>
 

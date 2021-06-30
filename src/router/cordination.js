@@ -9,6 +9,9 @@ export const gotoLogin=(history)=>{
 export const gotoRegister=(history)=>{
     history.push("/register")
 }
+export const gotoAddress=(history)=>{
+    history.push("/register/address")
+}
 export const gotoCart=(history)=>{
     history.push("/carrinho")
 }
@@ -21,3 +24,4 @@ export const gotoRest=(history)=>{
 export const gotoBack=(history)=>{
     history.back()
 }
+

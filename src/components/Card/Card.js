@@ -1,7 +1,7 @@
 import React from 'react'
 import {CardProduto,CardText,DeliverySpace} from "./style"
 
-const Card = (props) => {
+const Card = ({restaurants}) => {
     return (
         <CardProduto>
 

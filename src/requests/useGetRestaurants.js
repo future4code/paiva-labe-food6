@@ -20,5 +20,5 @@ export const useGetRestaurants = () => {
         console.log(err)
     })
 }
-    return{restaurants, getRestaurants}
+    return {restaurants, getRestaurants}
 }

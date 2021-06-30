@@ -17,7 +17,7 @@ export const useGetRestaurants = () => {
         setRestaurants(res.data)
     })
     .catch((err) => {
-        console.log(err)
+        alert(err.response.data.message)
     })
 }
     return {restaurants, getRestaurants}

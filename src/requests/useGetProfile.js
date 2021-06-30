@@ -20,5 +20,5 @@ export function useGetProfile() {
             })
 
     }
-    return [userProfile, getProfile]
+    return {userProfile, getProfile}
 }

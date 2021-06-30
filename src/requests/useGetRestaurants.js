@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export const useGetRestaurants = () => {
-    const token = localStorage.getItem("token")
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRNaWlNcnY0b3BMa2tpSUNPQjRSIiwiZW1haWwiOiJqdWxsaWFAZ21haWwuY29tLmJyIiwiaWF0IjoxNjI1MDYwNTU2fQ.W3foKXlLEarnuKN_XymoJVfRVZ2tJi2kyhnBp93h4yg"
     const [restaurants, setRestaurants] = useState({})
 
     const getRestaurants = () => {

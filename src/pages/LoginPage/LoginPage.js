@@ -2,8 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../../components/TextInput/TextInput';
 import useForm from '../../hooks/useForm';
-import { login } from "../../requests/LoginRequest"
-import {gotoRegister} from '../../router/cordination'
+import { LoginRequest } from "../../requests/AccessApp"
+import { gotoRegister } from '../../router/cordination'
+import { Main, FormContainer, Button } from "../LoginPage/styled"
+import { logo } from '../../Assets/logo.png'
 
 
 function LoginPage() {
@@ -16,15 +18,19 @@ function LoginPage() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        login(body, clear);
+        LoginRequest(body, clear, history);
     }
     console.log(body)
     return (
-        <div>
+        <Main>
+
 
             {/* <TextInput type="tipo do input" name="nome do input, será usado com o customhook do useForm" value="valor dele de acordo com o hook" label="mensagem na parte superior" placeholder="mensagem do campo de busca" onChange="evento de mudança que vai pra o estado do custom hook" /> */}
-            <form onSubmit={onSubmit}>
+            <FormContainer >
+          <form  onSubmit={onSubmit}>
 
+            <img src={logo} alt="logo"/> 
+                <h3>Entrar</h3>
                 <TextInput
                     type="text"
                     name="email"
@@ -41,12 +47,14 @@ function LoginPage() {
                     onChange={onChange}
                     required />
 
-                <button>Entrar</button>
-                <button onClick={() => gotoRegister(history)}>Cadastre-se</button>
+                <Button
+                    fullWidth
+                >Entrar</Button>
+                <h4 onClick={() => gotoRegister(history)}>Ainda não tem Cadastro? Clique aqui</h4>
+</form>
+            </FormContainer>
 
-            </form>
-
-        </div>
+        </Main>
     )
 }
 

@@ -3,21 +3,21 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export const useGetRestaurants = () => {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRNaWlNcnY0b3BMa2tpSUNPQjRSIiwiZW1haWwiOiJqdWxsaWFAZ21haWwuY29tLmJyIiwiaWF0IjoxNjI1MDYwNTU2fQ.W3foKXlLEarnuKN_XymoJVfRVZ2tJi2kyhnBp93h4yg"
     const [restaurants, setRestaurants] = useState({})
-
-    const getRestaurants = () => {
-    axios.get(`${BASE_URL}/restaurants`, {
+    const header= {
         headers: {
-            auth: token
+            auth:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkNmbjZPd0YyOVU5TDJSYzV0UWo1IiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE1NzMwOTkxNjh9.GNN7SQnv-WqZCnrh6q1UobUcb4jBkugtFpa50cdFQcE"
         }
-    })
+    }
+    const getRestaurants = () => {
+    axios.get(`${BASE_URL}/restaurants`, header)
     .then((res) => {
         console.log(res.data)
         setRestaurants(res.data)
     })
     .catch((err) => {
         alert(err.response.data.message)
+        console.log(header)
     })
 }
     return {restaurants, getRestaurants}

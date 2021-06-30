@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../../components/TextInput/TextInput';
 import useForm from '../../hooks/useForm';
-import { login } from "../../requests/LoginRequest"
+import { LoginRequest } from "../../requests/AccessApp"
 import { gotoRegister } from '../../router/cordination'
 import { Main, FormContainer, Button } from "../LoginPage/styled"
 import { logo } from '../../Assets/logo.png'
@@ -18,7 +18,7 @@ function LoginPage() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        login(body, clear);
+        LoginRequest(body, clear, history);
     }
     console.log(body)
     return (

@@ -7,6 +7,7 @@ function HomePage() {
     const {restaurants, getRestaurants}= useContext(GlobalStateContext)
     console.log(restaurants)
 
+/**/
 
     return (
         <div>

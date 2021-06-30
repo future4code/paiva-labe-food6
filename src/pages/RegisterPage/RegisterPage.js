@@ -3,11 +3,9 @@ import { Button, PageRegister, FormContainer } from "../RegisterPage/styled"
 import TextInput from '../../components/TextInput/TextInput';
 import { SignUpRequest } from "../../requests/AccessApp"
 import useForm from '../../hooks/useForm';
-import { useHistory } from 'react-router-dom';
-import {gotoAddress} from '../../router/cordination'
 
 function RegisterPage() {
-    const history = useHistory()
+
     const { body, onChange, clear } = useForm({
         name: "",
         email: "",
@@ -15,9 +13,15 @@ function RegisterPage() {
         password: ""
     })
 
+
     const onSubmit = (e) => {
         e.preventDefault();
-        SignUpRequest(body, clear);
+        if (body.password === body.passwordcheck) {
+            SignUpRequest(body, clear);
+        } else {
+            alert("Senhas incompatíveis")
+        }
+
     }
 
 
@@ -28,58 +32,70 @@ function RegisterPage() {
 
             <form onSubmit={onSubmit}>
                 <FormContainer>
-                    <TextInput
-                        type="text"
-                        name="nome"
-                        value={body.text}
-                        label="Nome"
-                        placeholder="Nome e Sobrenome"
-                        onChange={onChange}
-                        required />
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="name"
+                            value={body.text}
+                            label="Nome"
+                            placeholder="Nome e Sobrenome"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="email"
+                            name="email"
+                            value={body.email}
+                            label="E-mail"
+                            placeholder="email@email.com"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
 
-                    <TextInput
-                        type="email"
-                        name="email"
-                        value={body.email}
-                        label="E-mail"
-                        placeholder="email@email.com"
-                        onChange={onChange}
-                        required />
+                    <FormContainer>
+                        <TextInput
+                            type="string"
+                            name="cpf"
+                            value={body.string}
+                            label="CPF"
+                            placeholder="000.000.000-00"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
 
-                    <TextInput
-                        type="string"
-                        name="CPF"
-                        value={body.string}
-                        label="CPF"
-                        placeholder="000.000.000-00"
-                        onChange={onChange}
-                        required />
+                    <FormContainer>
+                        <TextInput
+                            type="password"
+                            name="password"
+                            value={body.password}
+                            label="Senha"
+                            placeholder="Mínimo 6 caracteres"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
 
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={body.password}
-                        label="Senha"
-                        placeholder="Mínimo 6 caracteres"
-                        onChange={onChange}
-                        required />
-
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={body.password}
-                        label="Confirmar"
-                        placeholder="Confirmar a senha anterior"
-                        onChange={onChange}
-                        required />
-
+                    <FormContainer>
+                        <TextInput
+                            type="password"
+                            name="passwordcheck"
+                            value={body.passwordcheck}
+                            label="Confirmar"
+                            placeholder="Confirmar a senha anterior"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
+                        <Button type="submit">Criar</Button>
+                    </FormContainer>
                 </FormContainer>
+
+
             </form>
-            
-            <Button onClick={() => gotoAddress(history)}>Criar</Button>
 
 
-        </PageRegister>
+
+        </PageRegister >
     )
 }
 export default RegisterPage;

@@ -3,9 +3,10 @@ import { Button, PageRegister, FormContainer } from "../RegisterPage/styled"
 import TextInput from '../../components/TextInput/TextInput';
 import { SignUpRequest } from "../../requests/AccessApp"
 import useForm from '../../hooks/useForm';
+import { useHistory } from 'react-router-dom';
 
 function RegisterPage() {
-
+    const history = useHistory()
     const { body, onChange, clear } = useForm({
         name: "",
         email: "",
@@ -17,7 +18,7 @@ function RegisterPage() {
     const onSubmit = (e) => {
         e.preventDefault();
         if (body.password === body.passwordcheck) {
-            SignUpRequest(body, clear);
+            SignUpRequest(body,clear,history);
         } else {
             alert("Senhas incompatíveis")
         }

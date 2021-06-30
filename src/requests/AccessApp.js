@@ -18,12 +18,13 @@ export function LoginRequest(body, clear, history) {
 export function SignUpRequest(body, clear, history) {
     
     axios.post(`${BASE_URL}/signup`, body)
-        .then((res) => {            
+        .then((res) => {          
+            console.log(res.data)  
             localStorage.setItem("token", res.data.token)
             gotoAddress(history)
             clear()
         })
         .catch((err) => {
-            console.log(err.response.data.message)
+            console.log(err.response)
         })
 }

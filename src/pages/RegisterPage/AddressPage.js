@@ -1,93 +1,81 @@
 import React from 'react';
+import Header from '../../components/Header/Header';
 import { Button, PageRegister, FormContainer } from "./styled"
 import TextInput from '../../components/TextInput/TextInput';
-import { SignUpRequest } from "../../requests/AccessApp"
+import { addAdress } from '../../requests/PutAddAdress';
 import useForm from '../../hooks/useForm';
+import { useHistory } from 'react-router-dom';
 
 function AddressPage() {
-    const { body, onChange, clear } = useForm({
-        neighbourhood: "",
-        number: "",
-        city: "",
-        apartment: "",
-        state: "",
-        street: ""
-    })
+    const history = useHistory()
+    const { body, onChange, clear } = useForm({ street: "", number: "",neighbourhood:"", city:"", state:"", complement:"" })
 
     const onSubmit = (e) => {
         e.preventDefault();
-        SignUpRequest(body, clear);
+        addAdress(body, clear, history);
     }
 
 
     return (
-        <PageRegister>
-            <h1>Future Eats</h1>
+        <div> <Header />
+
+
             <h4>Meu endereço</h4>
 
             <form onSubmit={onSubmit}>
-                <FormContainer>
-                    <TextInput
-                        type="string"
-                        name="logradouro"
-                        value={body.street}
-                        label="Logradouro"
-                        placeholder="Rua / Av"
-                        onChange={onChange}
-                        required />
+                <TextInput
+                    type="text"
+                    name="street"
+                    value={body.street}
+                    label="rua"
+                    onChange={onChange}
+                    required />
 
-                    <TextInput
-                        type="number"
-                        name="numero"
-                        value={body.number}
-                        label="Número"
-                        placeholder="Número"
-                        onChange={onChange}
-                        required />
+                <TextInput
+                    type="number"
+                    name="number"
+                    value={body.number}
+                    label="numero"
+                    onChange={onChange}
+                    required />
 
-                    <TextInput
-                        type="string"
-                        name="complemento"
-                        value={body.apartment}
-                        label="Complemento"
-                        placeholder="Apt / Bloco"
-                        onChange={onChange}
-                        required />
+                <TextInput
+                    type="text"
+                    name="neighbourhood"
+                    value={body.neighbourhood}
+                    label="bairo"
+                    onChange={onChange}
+                    required />
 
-                    <TextInput
-                        type="text"
-                        name="bairro"
-                        value={body.neighbourhood}
-                        label="Bairro"
-                        placeholder="Bairro"
-                        onChange={onChange}
-                        required />
+                <TextInput
+                    type="text"
+                    name="city"
+                    value={body.city}
+                    label="cidade"
+                    onChange={onChange}
+                    required />
 
-                    <TextInput
-                        type="text"
-                        name="cidade"
-                        value={body.city}
-                        label="Cidade"
-                        placeholder="Cidade"
-                        onChange={onChange}
-                        required />
-
-                    <TextInput
-                        type="text"
-                        name="estado"
-                        value={body.state}
-                        label="Estado"
-                        placeholder="Estado"
-                        onChange={onChange}
-                        required />
-
-                </FormContainer>
+                <TextInput
+                    type="text"
+                    name="state"
+                    value={body.state}
+                    label="estado"
+                    onChange={onChange}
+                    required />
+                    
+                <TextInput
+                    type="text"
+                    name="complement"
+                    value={body.complement}
+                    label="complemento"
+                    onChange={onChange}
+                />
+                <Button
+                    fullWidth
+                >Cadastrar</Button>
             </form>
 
-            <Button onClick={""}>Salvar</Button>
-
-
-        </PageRegister>
+        </div>
     )
 }
 export default AddressPage;

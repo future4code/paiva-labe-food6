@@ -7,7 +7,7 @@ export const useGetRestaurantsDetails = () => {
     const [restaurantDetail, setRestaurantDetail] = useState({})
 
 
-    const restaurantDetails = (id) => {
+    const getRestaurantDetails = (id) => {
     axios.get(`${BASE_URL}/restaurants/${id}`, {
         headers: {
             auth: token
@@ -21,5 +21,5 @@ export const useGetRestaurantsDetails = () => {
         console.log(err)
     })
 }
-    return{restaurantDetail, restaurantDetails}
+    return{restaurantDetail, getRestaurantDetails}
 }

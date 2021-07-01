@@ -13,7 +13,6 @@ import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 function HomePage() {
     const history= useHistory()
-    // const [restaurants, setRestaurants] = useState("")
     const {restaurants,getRestaurants} = useContext(GlobalStateContext)
 
     console.log(restaurants)

@@ -12,7 +12,7 @@ function GlobalState(props) {
     const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
 
 useEffect(()=>{
-    getRestaurants()
+    // getRestaurants()
 }, [])
 
     return (

@@ -1,0 +1,19 @@
+@import "../../global/color.scss";
+
+@media (max-width: 600px) {
+  #orderContainer {
+    width: 95%;
+    align-items: center;
+    border: 1px solid #666;
+    margin: 10px auto;
+    border-radius: 10px;
+
+    .orderCard {
+      padding: 5px;
+      h2 {
+        color: $midGreen;
+      }
+    }
+
+  }
+}

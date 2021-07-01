@@ -2,8 +2,10 @@ import React from 'react';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import './profilepage.scss';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function ProfilePage() {
+    useProtectedPage()
     return (
         <div id="profileContainer">
             <header>

@@ -1,27 +1,30 @@
 
 
-export const gotoHome=(history)=>{
+export const gotoHome = (history) => {
     history.push("/")
 }
-export const gotoLogin=(history)=>{
+export const gotoLogin = (history) => {
     history.push("/login")
 }
-export const gotoRegister=(history)=>{
-    history.push("/register")
+export const gotoRegister = (history) => {
+    history.push("/registrar")
 }
-export const gotoAddress=(history)=>{
-    history.push("/register/address")
+export const gotoAddress = (history) => {
+    history.push("/registrar/endereco")
 }
-export const gotoCart=(history)=>{
+export const gotoCart = (history) => {
     history.push("/carrinho")
 }
-export const gotoProfile=(history)=>{
-    history.push("/profile")
+export const gotoProfile = (history) => {
+    history.push("/perfil")
 }
-export const gotoRest=(history, id)=>{
-    history.push(`/restaurant/${id}`)
+export const gotoRest = (history, id) => {
+    history.push(`/restaurante/${id}`)
 }
-export const gotoBack=(history)=>{
+export const goToHomePage = (history) => {
+    history.push(`/pagina-inicial`)
+}
+export const gotoBack = (history) => {
     history.back()
 }
 

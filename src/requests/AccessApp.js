@@ -15,16 +15,16 @@ export function LoginRequest(body, clear, history) {
         })
 }
 
-export function SignUpRequest(body, clear, history) {
-    
+export function SignUpRequest(body, clear, history, values ) {
+
     axios.post(`${BASE_URL}/signup`, body)
-        .then((res) => {          
-            console.log(res.data)  
+        .then((res) => {
             localStorage.setItem("token", res.data.token)
             gotoAddress(history)
             clear()
+            values()
         })
         .catch((err) => {
-            console.log(err.response)
+            alert(err.response.data.message)
         })
 }

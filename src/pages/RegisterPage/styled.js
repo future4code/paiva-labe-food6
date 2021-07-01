@@ -6,7 +6,17 @@ export const PageRegister = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;  
-     }
+    margin-top:25%;
+
+    p{
+      font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight:normal;
+      font-size: 16px;
+      color: black;
+    } 
+    
+
+}
 `
 
 export const FormContainer = styled.div` 
@@ -14,6 +24,7 @@ export const FormContainer = styled.div`
     display:flex;
     flex-direction: column; 
     padding: 8px;   
+    
        
 
     input {
@@ -43,16 +54,17 @@ export const Button = styled.button`
     cursor: pointer;
     border: none;
     color: #000;
-    width: 90%;
+    width: 100%;
     font-size: 16px;
-    font-family: Roboto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
     background:  rgba(92, 182, 70, 50);
     letter-spacing: -0.39px;
     &:after {
       content: "";
       position: absolute;
       width: 0;
-      height: 0;
+      height: 10px;
       top: 50%;
       left: 50%;
       transform-style: flat;

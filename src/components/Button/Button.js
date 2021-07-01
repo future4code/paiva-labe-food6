@@ -19,9 +19,9 @@ export const Button = styled.button`
     cursor: pointer;
     border: none;
     color: #000;
-    width: 90%;
+    width: 100%;
     font-size: 16px;
-    font-family: Roboto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background:  rgba(92, 182, 70, 50);
     letter-spacing: -0.39px;
     &:after {

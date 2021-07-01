@@ -1,137 +1,81 @@
 import React from 'react';
+import Header from '../../components/Header/Header';
 import { Button, PageRegister, FormContainer } from "./styled"
-import { SignUpRequest } from "../../requests/AccessApp"
+
+import TextInput from '../../components/TextInput/TextInput';
+import { addAdress } from '../../requests/PutAddAdress';
 import useForm from '../../hooks/useForm';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import { useStyles } from "../../components/FileInput/FileInput"
-
-
+import { useHistory } from 'react-router-dom';
 
 function AddressPage() {
-    const classes = useStyles();
-    const { body, onChange, clear } = useForm({
-        neighbourhood: "",
-        number: "",
-        city: "",
-        apartment: "",
-        state: "",
-        street: ""
-    })
+    const history = useHistory()
+    const { body, onChange, clear } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
+
 
     const onSubmit = (e) => {
         e.preventDefault();
-        SignUpRequest(body, clear);
+        addAdress(body, clear, history);
     }
 
 
     return (
-        <PageRegister>
-
-            <p>Meu endereço</p>
-
+        <div> <Header />
+            <h4>Meu endereço</h4>
             <form onSubmit={onSubmit}>
-                <FormContainer>
-                    <FormContainer>
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-logradouro">Logradouro*</InputLabel>
-                            <OutlinedInput
-                                type="string"
-                                name="street"
-                                value={body.string}
-                                placeholder="Rua / Av"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-                    <FormContainer>
+                <TextInput
+                    type="text"
+                    name="street"
+                    value={body.street}
+                    label="rua"
+                    onChange={onChange}
+                    required />
 
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-numero">Número*</InputLabel>
-                            <OutlinedInput
-                                type="number"
-                                name="number"
-                                value={body.number}
-                                placeholder="Número"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-                    <FormContainer>
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-complemento">Complemento</InputLabel>
-                            <OutlinedInput
-                                type="string"
-                                name="apartment"
-                                value={body.apartment}
-                                placeholder="Apt / Bloco"
-                                onChange={onChange}
-                                labelWidth={100}
-                            />
-                        </FormControl>
+                <TextInput
+                    type="number"
+                    name="number"
+                    value={body.number}
+                    label="numero"
+                    onChange={onChange}
+                    required />
 
-                    </FormContainer>
-                    <FormContainer>
+                <TextInput
+                    type="text"
+                    name="neighbourhood"
+                    value={body.neighbourhood}
+                    label="bairo"
+                    onChange={onChange}
+                    required />
 
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-bairro">Bairro*</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                name="neighbourhood"
-                                value={body.text}
-                                placeholder="Bairro"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-                    <FormContainer>
+                <TextInput
+                    type="text"
+                    name="city"
+                    value={body.city}
+                    label="cidade"
+                    onChange={onChange}
+                    required />
 
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-cidade">Cidade*</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                name="city"
-                                value={body.text}
-                                placeholder="Cidade"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-                    <FormContainer>
+                <TextInput
+                    type="text"
+                    name="state"
+                    value={body.state}
+                    label="estado"
+                    onChange={onChange}
+                    required />
 
-                        <FormControl className={(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-estado">Estado*</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                name="state"
-                                value={body.text}
-                                placeholder="Estado"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-
-
-                </FormContainer>
-
-                <FormContainer>
-                    <Button type="">Salvar</Button>
-                </FormContainer>
-
+                <TextInput
+                    type="text"
+                    name="complement"
+                    value={body.complement}
+                    label="complemento"
+                    onChange={onChange}
+                />
+                <Button
+                    fullWidth
+                >Cadastrar</Button>
             </form>
 
-        </PageRegister >
+        </div>
+
     )
 }
 export default AddressPage;

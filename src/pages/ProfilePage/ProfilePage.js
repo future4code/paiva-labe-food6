@@ -2,8 +2,10 @@ import React from 'react';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import './profilepage.scss';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function ProfilePage() {
+    useProtectedPage()
     return (
         <div id="profileContainer">
             <header>
@@ -25,17 +27,13 @@ function ProfilePage() {
                         <p>Rua Lorem Ipsum, 123 - Labenu</p>
                     </div>
 
-
                     <CreateOutlinedIcon />
-
 
                 </section>
                 <h2>Historico de pedidos</h2>
                 <div style={{ width: "100%", borderBottom: "1px solid black" }} />
                 {/* Card de Pedidos*/}
                 <OrderCard />
-
-
             </div>
         </div>
     )

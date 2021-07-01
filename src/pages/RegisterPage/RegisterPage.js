@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { useStyles } from "../../components/FileInput/FileInput"
+import { useStyles } from "../../components/FileInput/FileInput";
 
 
 function RegisterPage() {
@@ -19,6 +19,7 @@ function RegisterPage() {
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
+        passwordClick: ""
     });
 
     const history = useHistory()
@@ -27,7 +28,6 @@ function RegisterPage() {
         email: "",
         cpf: "",
         password: "",
-        passwordClick: "",
     })
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -47,15 +47,16 @@ function RegisterPage() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (body.password === body.passwordClick) {
+        if (body.password === values.passwordClick) {
+
             SignUpRequest(body, clear, history, values);
         } else {
             alert("Senhas incompatíveis")
         }
 
     }
-
-
+    console.log(body)
+    console.log(values.passwordClick)
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />
@@ -112,9 +113,10 @@ function RegisterPage() {
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={values.showPassword ? 'text' : 'password'}
-                                value={values.password}
+                                value={body.password}
                                 placeholder="Mínimo 6 caracteres"
-                                onChange={handleChange('password')}
+                                onChange={onChange}
+                                name="password"
                                 required
                                 endAdornment={
                                     <InputAdornment position="end">
@@ -139,7 +141,7 @@ function RegisterPage() {
                         <FormControl className={(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-passwordClick">Confirmar*</InputLabel>
                             <OutlinedInput
-                            id="outlined-adornment-passwordClick"
+                                id="outlined-adornment-passwordClick"
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.passwordClick}
                                 placeholder="Inserir a senha anterior"
@@ -149,7 +151,7 @@ function RegisterPage() {
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="toggle password visibility"
-                                            onClick={handleShowPassword }
+                                            onClick={handleShowPassword}
                                             onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                         >
@@ -162,7 +164,7 @@ function RegisterPage() {
                             />
                         </FormControl>
                     </FormContainer>
-                   
+
 
                 </FormContainer>
                 <Button type="submit">Criar</Button>

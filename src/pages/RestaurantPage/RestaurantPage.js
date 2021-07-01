@@ -1,15 +1,31 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { getRestaurants } from '../../requests/getRestaurants';
+import { useParams } from 'react-router-dom';
+import CardProduto from '../../components/Card/CardProduto';
+import { useGetRestaurantsDetails } from '../../requests/getRestaurantDetail';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function RestaurantPage() {
+    useProtectedPage()
+    const params = useParams()
+    const { restaurantDetail, getRestaurantDetails } = useGetRestaurantsDetails()
 
-    useEffect(()=>{
-        getRestaurants()
+    useEffect(() => {
+        getRestaurantDetails(params.id)
     }, [])
-    return(
+
+    const productsList = restaurantDetail.restaurant && restaurantDetail.restaurant.products.map((product) => {
+        return (
+            <CardProduto
+                product={product}
+            />
+        )
+    })
+
+    return (
         <div>
             <h1>Oi eu sou a RestaurantPage</h1>
+            {productsList && productsList}
         </div>
     )
 }

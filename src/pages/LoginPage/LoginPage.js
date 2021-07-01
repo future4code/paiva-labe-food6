@@ -20,7 +20,6 @@ function LoginPage() {
         e.preventDefault();
         LoginRequest(body, clear, history);
     }
-    console.log(body)
     return (
         <Main>
 

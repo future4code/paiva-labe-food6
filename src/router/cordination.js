@@ -18,8 +18,8 @@ export const gotoCart=(history)=>{
 export const gotoProfile=(history)=>{
     history.push("/profile")
 }
-export const gotoRest=(history)=>{
-    history.push("/restaurant")
+export const gotoRest=(history, id)=>{
+    history.push(`/restaurant/${id}`)
 }
 export const gotoBack=(history)=>{
     history.back()

@@ -25,17 +25,13 @@ function ProfilePage() {
                         <p>Rua Lorem Ipsum, 123 - Labenu</p>
                     </div>
 
-
                     <CreateOutlinedIcon />
-
 
                 </section>
                 <h2>Historico de pedidos</h2>
                 <div style={{ width: "100%", borderBottom: "1px solid black" }} />
                 {/* Card de Pedidos*/}
                 <OrderCard />
-
-
             </div>
         </div>
     )

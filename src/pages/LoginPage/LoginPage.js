@@ -5,12 +5,12 @@ import useForm from '../../hooks/useForm';
 import { LoginRequest } from "../../requests/AccessApp"
 import { gotoRegister } from '../../router/cordination'
 import { Main, FormContainer, Button } from "../LoginPage/styled"
-import logo  from '../../Assets/logo.png'
-
+import logo from '../../Assets/logo.png'
+import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 
 function LoginPage() {
     const history = useHistory()
-
+    useUnprotectedPage()
     const { body, onChange, clear } = useForm({ email: "", password: "" })
     //const history = useHistory()
     //Desenvolver um formulário e a funcao 'clear' do useForm limpa todos os campos
@@ -23,34 +23,33 @@ function LoginPage() {
     return (
         <Main>
 
-
             {/* <TextInput type="tipo do input" name="nome do input, será usado com o customhook do useForm" value="valor dele de acordo com o hook" label="mensagem na parte superior" placeholder="mensagem do campo de busca" onChange="evento de mudança que vai pra o estado do custom hook" /> */}
             <FormContainer >
-          <form  onSubmit={onSubmit}>
+                <form onSubmit={onSubmit}>
 
-            <img src={logo} alt="logo"/> 
-                <h3>Entrar</h3>
-                <TextInput
-                    type="text"
-                    name="email"
-                    value={body.email}
-                    label="Email"
-                    onChange={onChange}
-                    required />
+                    <img src={logo} alt="logo" />
+                    <h3>Entrar</h3>
+                    <TextInput
+                        type="text"
+                        name="email"
+                        value={body.email}
+                        label="Email"
+                        onChange={onChange}
+                        required />
 
-                <TextInput
-                    type="password"
-                    name="password"
-                    value={body.password}
-                    label="password"
-                    onChange={onChange}
-                    required />
+                    <TextInput
+                        type="password"
+                        name="password"
+                        value={body.password}
+                        label="password"
+                        onChange={onChange}
+                        required />
 
-                <Button
-                    fullWidth
-                >Entrar</Button>
-                <h4 onClick={() => gotoRegister(history)}>Ainda não tem Cadastro? Clique aqui</h4>
-</form>
+                    <Button
+                        fullWidth
+                    >Entrar</Button>
+                    <h4 onClick={() => gotoRegister(history)}>Ainda não tem Cadastro? Clique aqui</h4>
+                </form>
             </FormContainer>
 
         </Main>

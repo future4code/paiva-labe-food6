@@ -10,8 +10,10 @@ import { Container, CardRest } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function HomePage() {
+    useProtectedPage()
     const history= useHistory()
     const {restaurants,getRestaurants} = useContext(GlobalStateContext)
 

@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 function AddressPage() {
     const history = useHistory()
-    const { body, onChange, clear } = useForm({ street: "", number: "",neighbourhood:"", city:"", state:"", complement:"" })
+    const { body, onChange, clear } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
 
 
     const onSubmit = (e) => {
@@ -19,12 +19,8 @@ function AddressPage() {
 
 
     return (
-
         <div> <Header />
-
-
             <h4>Meu endereço</h4>
-
             <form onSubmit={onSubmit}>
                 <TextInput
                     type="text"
@@ -65,7 +61,7 @@ function AddressPage() {
                     label="estado"
                     onChange={onChange}
                     required />
-                    
+
                 <TextInput
                     type="text"
                     name="complement"

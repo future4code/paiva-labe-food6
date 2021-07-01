@@ -18,7 +18,7 @@ export const addAdress = (body, clear, history) => {
             clear()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 
 }

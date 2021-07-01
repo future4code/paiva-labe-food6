@@ -11,8 +11,10 @@ function GlobalState(props) {
     const { restaurants, getRestaurants } = useGetRestaurants([{}])
     const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
 
+    console.log(restaurants && restaurants)
+    
 useEffect(()=>{
-    // getRestaurants()
+    getRestaurants()
 }, [])
 
     return (

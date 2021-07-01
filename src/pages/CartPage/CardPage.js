@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
-import CardCart from "../../components/Card/CardCart"
 import CartPage from '../../components/Cart/Cart';
 import TituloPage from '../../components/Cart/TituloPage'
 import AddressCart from '../../components/Cart/AddressCart'

@@ -5,7 +5,7 @@ import useForm from '../../hooks/useForm';
 import { LoginRequest } from "../../requests/AccessApp"
 import { gotoRegister } from '../../router/cordination'
 import { Main, FormContainer, Button } from "../LoginPage/styled"
-import { logo } from '../../Assets/logo.png'
+import logo  from '../../Assets/logo.png'
 
 
 function LoginPage() {

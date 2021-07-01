@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 import { Button, PageRegister, FormContainer } from "./styled"
+
 import TextInput from '../../components/TextInput/TextInput';
 import { addAdress } from '../../requests/PutAddAdress';
 import useForm from '../../hooks/useForm';
@@ -10,6 +11,7 @@ function AddressPage() {
     const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", number: "",neighbourhood:"", city:"", state:"", complement:"" })
 
+
     const onSubmit = (e) => {
         e.preventDefault();
         addAdress(body, clear, history);
@@ -17,6 +19,7 @@ function AddressPage() {
 
 
     return (
+
         <div> <Header />
 
 
@@ -76,6 +79,7 @@ function AddressPage() {
             </form>
 
         </div>
+
     )
 }
 export default AddressPage;

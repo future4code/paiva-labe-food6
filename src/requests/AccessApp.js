@@ -1,6 +1,8 @@
 import { BASE_URL } from '../constants/constants';
 import axios from 'axios';
+
 import { gotoAddress } from '../router/cordination';
+
 
 export function LoginRequest(body, clear, history) {
     axios.post(`${BASE_URL}/login`, body)
@@ -14,13 +16,16 @@ export function LoginRequest(body, clear, history) {
         })
 }
 
-export function SignUpRequest(body) {
+export function SignUpRequest(body, clear, history, values ) {
 
-    axios.get(`${BASE_URL}/signup`, body)
+    axios.post(`${BASE_URL}/signup`, body)
         .then((res) => {
             localStorage.setItem("token", res.data.token)
+            gotoAddress(history)
+            clear()
+            values()
         })
         .catch((err) => {
-            alert(err.response.data)
+            alert(err.response.data.message)
         })
 }

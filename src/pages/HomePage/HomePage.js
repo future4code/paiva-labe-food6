@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
@@ -9,31 +9,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Container, CardRest } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
+import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 function HomePage() {
     const history= useHistory()
-    const [restaurants, setRestaurants] = useState("")
+    const {restaurants,getRestaurants} = useContext(GlobalStateContext)
+
     console.log(restaurants)
 
-    const testegetRestaurants = () => {
-
-        axios.get(`${BASE_URL}/restaurants`, {
-            headers: {
-                auth: localStorage.getItem('token')
-            }
-        }
-        )
-            .then((res) => {
-                setRestaurants(res.data.restaurants)
-
-            })
-            .catch((err) => {
-                alert(err.response.data.message)
-            })
-    }
-
     useEffect(() => {
-        testegetRestaurants()
+        getRestaurants()
     }, [])
 
     const verDetalhe=(id)=>{

@@ -9,6 +9,7 @@ export const PageCart = styled.div`
     justify-content: center;
     align-items: center;  
     margin-top:5%;
+    margin-bottom: 50px;
    
 
     h5{
@@ -21,33 +22,57 @@ export const PageCart = styled.div`
 }
 `
 export const MainEndereco = styled.div` 
-
-    height: 13vh;
-    width: 100%;
-    background-color: #E5E4E2;
-    border-left: none;
-    border-right: none;
+@media(max-width: 600px) {
+    height: 85px;
+    width: 378px;
+    background-color: #eeeeee;
+    padding: 16px;
+    margin: 10px 0 8px;
+    margin-top: 30px;   
+}
+   
     
-
-    p{
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      color: black;
-      
-    }  
-    h5{
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      color: black;
-      font-weight: normal;
-      font-size: 16px;
-      
-    }  
-    
-
 `
-export const MainContainer= styled.div` 
+export const DivTituloEndereco = styled.div` 
+    height: 20px;
+    width: 420px;    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 328px;
+    height: 18px;
+    margin: 0 0 8px;
+    line-height: normal;
+    letter-spacing: -0.39px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;     
+    color: #b8b8b8;            
+      
+  
+`
+
+export const DivEndereco = styled.div` 
+  width: 328px;
+  height: 18px;
+  margin: 8px 0 0;   
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;      
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--black)    
+   
+ `
+
+
+export const MainContainer = styled.div` 
 @media(max-width: 600px) {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
   
 
   h5 {
@@ -70,7 +95,7 @@ export const useStyles = makeStyles({
     borderRadius: '50%',
     width: 16,
     height: 16,
-    boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+    boxShadow: 'inset 0 0 0 2px rgba(0, 0, 0), inset 0 -1px 0 rgba(16,22,26,.1)',
     backgroundColor: '#f5f8fa',
     backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
     '$root.Mui-focusVisible &': {
@@ -92,7 +117,7 @@ export const useStyles = makeStyles({
       display: 'block',
       width: 16,
       height: 16,
-      backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
+      backgroundImage: 'radial-gradient(#fff,#fff 25%,transparent 2%)',
       content: '""',
     },
     'input:hover ~ &': {
@@ -100,4 +125,112 @@ export const useStyles = makeStyles({
     },
   },
 });
+
+export const FormaPag = styled.div` 
+  width: 328px;
+  height: 18px;
+  margin: 24px 16px 8px;
+  margin-left: -1px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: normal;    
+`
+
+export const DivHr = styled.div` 
+border: solid 1px black;
+
+`
+
+export const DivCartBody = styled.div` 
+width: 360px;
+height: 20vh;
+margin: 8px 0 33px;
+padding: 12px 32px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+`
+
+export const DivTituloCart = styled.div` 
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const DivFrete = styled.div` 
+  display: flex;
+  justify-content: flex-end;
+  width: 320px;
+  height: 49px;
+  margin-top:30px;
+  
+`
+export const DivContainerValor = styled.div` 
+display: flex;
+justify-content: space-between;
+width: 320px;
+`
+export const DivSubTotal = styled.div` 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 120px;
+  height: 49px;
+  margin-left: -25px;
+  
+`
+
+export const DivValorTotal = styled.div` 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 120px;
+  height: 49px;
+  color: green;
+  font-weight: bold;
+  font-size: 20px;  
+   
+`
+export const FooterContainer = styled.div` 
+display: flex;
+justify-content: center;
+align-items: center;
+width: 374px;
+border-top: gray 1px solid;
+margin-top: 20px;
+position: fixed;
+
+`
+
+export const DivHome = styled.div` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 27px;
+  margin-top: 10px;
+  object-fit: contain;
+  
+  
+`
+export const DivCart = styled.div` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 29px;
+  margin-top: 10px;
+  object-fit: contain;
+  
+`
+
+export const DivPerfil = styled.div` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  margin-top: 10px;
+  object-fit: contain; 
+   
+`
 

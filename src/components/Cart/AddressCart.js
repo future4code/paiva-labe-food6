@@ -1,12 +1,17 @@
 import React from 'react';
-import {MainEndereco} from '../../pages/CartPage/styled'
+import {MainEndereco, DivTituloEndereco, DivEndereco} from '../../pages/CartPage/styled'
 
 function AddressCart() {
     return (
         
             <MainEndereco>
-                <h5>Endereço de entrega</h5>
-                <p>Praia da Guanabara</p>
+                <DivTituloEndereco>
+                Endereço de entrega
+                </DivTituloEndereco>
+
+                <DivEndereco>
+                Praia da Guanabara
+                </DivEndereco>                
             </MainEndereco>
        
 

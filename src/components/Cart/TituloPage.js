@@ -4,7 +4,7 @@ import {MainContainer}  from '../../pages/CartPage/styled';
 function TituloPage() {
     return (
         <MainContainer>
-            <h5>Meu carrinho</h5>                  
+            <h5>Meu carrinho</h5>                
            
         </MainContainer>
 

@@ -4,8 +4,8 @@ import CartPage from '../../components/Cart/Cart';
 import TituloPage from '../../components/Cart/TituloPage'
 import AddressCart from '../../components/Cart/AddressCart'
 import { Button } from '../../components/Button/Button';
+import FooterCart from '../../components/Cart/Footer';
 import useProtectedPage from '../../hooks/useProtectedPage';
-
 
 function CardPage() {
   useProtectedPage()
@@ -25,6 +25,8 @@ function CardPage() {
       <AddressCart />
       <CartPage />
       <Button>Confirmar</Button>
+      <FooterCart />
+
     </div>
 
 

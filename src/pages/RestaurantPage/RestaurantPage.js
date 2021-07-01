@@ -1,6 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
+import CardProduto from '../../components/Card/CardProduto';
 import { useGetRestaurantsDetails } from '../../requests/getRestaurantDetail';
+
 
 function RestaurantPage() {
 
@@ -10,11 +12,11 @@ function RestaurantPage() {
         getRestaurantDetails(1)
     }, [])
 
-    console.log(restaurantDetail.restaurant)
-
     const productsList = restaurantDetail.restaurant && restaurantDetail.restaurant.products.map((product) => {
         return(
-            <div products = {product} />
+            <CardProduto
+                product = {product}
+            />
         )
     })
 

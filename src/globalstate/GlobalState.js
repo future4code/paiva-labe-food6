@@ -11,11 +11,11 @@ function GlobalState(props) {
     const { restaurants, getRestaurants } = useGetRestaurants([{}])
     const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
 
-
-/*useEffect(()=>{
+    console.log(restaurants && restaurants)
+    
+useEffect(()=>{
     getRestaurants()
-}, [])*/
-
+}, [])
 
     return (
         <GlobalStateContext.Provider value={userProfile, restaurants, getRestaurants, activeOrder}>

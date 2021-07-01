@@ -1,0 +1,46 @@
+@import "../../global/color.scss";
+
+@media (max-width: 600px) {
+
+  #profileContainer {
+    background-color: $black25;
+    max-width: 100vw;
+    height: 100vh;
+    line-height: 2;
+    font-size: 16px;
+  
+    header {
+      text-align: center;
+      align-items: center;
+      border-bottom: 1px solid black;
+      background-color: #fff;
+      padding: 10px;
+      h2 {
+        font-weight: 400;
+      }
+    }
+
+    .profileAlign {
+      padding: 5px 0;
+
+      .userInfo {
+        .namePencil {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .addressContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    background: rgba(0, 0, 0, 0.021);
+    h4 {
+      color: #ccc;
+    }
+  }
+}

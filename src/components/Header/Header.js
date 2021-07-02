@@ -22,7 +22,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <h3>FutureEats</h3>
+           
 
             <hr />
 

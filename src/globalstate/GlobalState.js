@@ -5,12 +5,12 @@ import {BASE_URL} from "../constants/constants"
 import { CardText } from '../components/Card/style'
 
 function GlobalState(props) {
-    const [cart, setCart] = useState([])
+    const [cart,setCart] = useState([])
     const [restaurants,setRestaurants] = useState([{}])
     const [restaurantDetail, setRestaurantDetail] = useState({})
 
     const token = localStorage.getItem("token")
-
+    //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
         
         axios.get(`${BASE_URL}/restaurants`, {
@@ -27,7 +27,7 @@ function GlobalState(props) {
                 alert(err.response.data.message)
             })
     }
-
+    //RESGATA DETALHES DO RESTAURANTE/////////////////////////////////////////////////////
     const getRestaurantDetails = (id) => {
         axios.get(`${BASE_URL}/restaurants/${id}`, {
             headers: {
@@ -43,20 +43,29 @@ function GlobalState(props) {
         })
 
     }
-
+    //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
     const makeCart = (product,qntd) => {
         const cartProduct = {}
 
         cartProduct.product = product
         cartProduct.qnt = qntd
 
+
         setCart([...cart,cartProduct])
 
     }
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart])
+        if(cart && cart.length > 0){ //Caso Cart tenha conteudo, envia para localStorage
+
+            localStorage.setItem("cart", JSON.stringify(cart))
+
+        }else if(cart.length <= 0 && localStorage.getItem("cart")
+                                && localStorage.getItem("cart").length){//Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
+
+            setCart(JSON.parse(localStorage.getItem("cart")))
+        }
+    },[cart])
 
     
     return (

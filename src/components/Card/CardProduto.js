@@ -9,6 +9,8 @@ const CardProduto = ({product}) => {
     const {name,description,id,photoUrl,price} = product
     const [open,setOpen] = useState(false)
 
+    console.log(product)
+
     let valor = price.toString().replace(".",",")
 
     if(valor.search(",") < 0){ //Adiciona ,00 aos valores sem decimal

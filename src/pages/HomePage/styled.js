@@ -1,5 +1,5 @@
 import styled from "styled-components"
-export const Container= styled.body`
+export const Container = styled.body`
 display:flex;
 flex-wrap:wrap;
 `
@@ -20,7 +20,6 @@ div{
     justify-content: space-around;
 }
 `
-
 export const PageHomeInitial= styled.div` 
 @media(max-width: 600px) {
       display: flex;
@@ -38,3 +37,18 @@ export const PageHomeInitial= styled.div`
 
 }
 ` 
+export const Filter = styled.div`
+display: flex;
+overflow-y: auto;
+
+p {
+    padding: 5px;
+    margin: 0 1px;
+    font-size: 1.2rem;
+    font-weight: 800;
+
+    :hover {
+        opacity: 0.5;
+    }
+}
+`

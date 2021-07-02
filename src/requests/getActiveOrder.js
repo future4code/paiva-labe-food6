@@ -7,19 +7,19 @@ export const useGetActiveOrder = () => {
     const [activeOrder, setActiveOrder] = useState({})
 
 
-    const ActiveOrder = () => {
-    axios.get(`${BASE_URL}/active-order`, {
-        headers: {
-            auth: token
-        }
-    })
-    .then((res) => {
-        console.log(res.data)
-        setActiveOrder(res.data)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}
-    return{activeOrder, ActiveOrder}
+    const getActiveOrder = () => {
+        axios.get(`${BASE_URL}/active-order`, {
+            headers: {
+                auth: token
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+                setActiveOrder(res.data.order)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    return { activeOrder, getActiveOrder }
 }

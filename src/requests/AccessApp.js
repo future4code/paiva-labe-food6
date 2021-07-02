@@ -24,9 +24,8 @@ export function SignUpRequest(body, clear, history) {
             alert("Conta criada com sucesso!");
             gotoAddress(history)
             clear()
-            
         })
         .catch((err) => {
-            console.log(err.response.data)
+            console.log(err)
         })
 }

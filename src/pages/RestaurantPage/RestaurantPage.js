@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CardProduto from '../../components/Card/CardProduto';
-import { useGetRestaurantsDetails } from '../../requests/getRestaurantDetail';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 
 function RestaurantPage() {
@@ -11,8 +11,7 @@ function RestaurantPage() {
     useProtectedPage()
 
     const params = useParams()
-    const { restaurantDetail, getRestaurantDetails } = useGetRestaurantsDetails()
-    const [open,setOpen] = useState(false)
+    const { restaurantDetail, getRestaurantDetails } = useContext(GlobalStateContext)
 
     useEffect(() => {
         getRestaurantDetails(params.id)

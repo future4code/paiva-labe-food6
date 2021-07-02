@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalStateContext } from "./GlobalStateContext"
-import { useGetProfile } from '../requests/useGetProfile'
-import { useGetActiveOrder } from '../requests/getActiveOrder'
 import axios from "axios"
 import {BASE_URL} from "../constants/constants"
+import { CardText } from '../components/Card/style'
 
 function GlobalState(props) {
-    const [carrinho, setCarrinho] = useState([{}])
+    const [cart, setCart] = useState([])
     const [restaurants,setRestaurants] = useState([{}])
+    const [restaurantDetail, setRestaurantDetail] = useState({})
 
-    const { userProfile, getProfile } = useGetProfile({})
-    const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
+    const token = localStorage.getItem("token")
 
     const getRestaurants = () => {
-
+        
         axios.get(`${BASE_URL}/restaurants`, {
             headers: {
-                auth: localStorage.getItem('token')
+                auth: token
             }
         }
         )
@@ -29,9 +28,39 @@ function GlobalState(props) {
             })
     }
 
+    const getRestaurantDetails = (id) => {
+        axios.get(`${BASE_URL}/restaurants/${id}`, {
+            headers: {
+                auth: token
+            }
+        })
+        .then((res) => {
+            console.log(res.data)
+            setRestaurantDetail(res.data)
+        })
+        .catch((err) => {
+            alert(err.response.data)
+        })
 
+    }
+
+    const makeCart = (product,qntd) => {
+        const cartProduct = {}
+
+        cartProduct.product = product
+        cartProduct.qnt = qntd
+
+        setCart([...cart,cartProduct])
+
+    }
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart])
+
+    
     return (
-        <GlobalStateContext.Provider value={{userProfile, restaurants, getRestaurants, activeOrder}}>
+        <GlobalStateContext.Provider value={{restaurants,restaurantDetail, getRestaurants,getRestaurantDetails,makeCart}}>
             {props.children}
         </GlobalStateContext.Provider>
     )

@@ -51,7 +51,7 @@ const CardProduto = ({product}) => {
             >
 
                 <ModalComponent
-                    productID = {id}
+                    product = {product}
                     close = {() => closeButton(false)}
                 />
             </Modal>

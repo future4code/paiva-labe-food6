@@ -1,9 +1,9 @@
 import React from 'react'
-import {CardProduto,CardText,DeliverySpace} from "./style"
+import {CardRes,CardText,DeliverySpace} from "./style"
 
 const Card = ({restaurants}) => {
     return (
-        <CardProduto>
+        <CardRes>
 
             <figure>
                 <img src = ""/>
@@ -16,7 +16,7 @@ const Card = ({restaurants}) => {
                 <CardText>Frete R$5,00</CardText>
             </DeliverySpace>
 
-        </CardProduto>
+        </CardRes>
     )
 }
 

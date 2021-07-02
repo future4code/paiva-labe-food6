@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalStateContext } from "./GlobalStateContext"
 import axios from "axios"
+
 import {BASE_URL} from "../constants/constants"
 import { CardText } from '../components/Card/style'
 
@@ -69,7 +70,9 @@ function GlobalState(props) {
 
     
     return (
+
         <GlobalStateContext.Provider value={{restaurants,restaurantDetail, getRestaurants,getRestaurantDetails,makeCart}}>
+
             {props.children}
         </GlobalStateContext.Provider>
     )

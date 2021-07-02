@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
-import './profilepage.scss';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import { useGetProfile } from '../../requests/useGetProfile';
+import { useGetActiveOrder } from '../../requests/getActiveOrder';
+import './profilepage.scss';
 
 function ProfilePage() {
     useProtectedPage()
+    const { userProfile, getProfile } = useGetProfile()
+    const { activeOrder, getActiveOrder } = useGetActiveOrder()
+
+    const { name, email, cpf, address } = userProfile
+    useEffect(() => {
+        getProfile()
+        getActiveOrder()
+    }, [])
+
+    console.log(userProfile)
+    console.log(activeOrder)
+
     return (
         <div id="profileContainer">
             <header>
@@ -14,17 +28,17 @@ function ProfilePage() {
             <div className="profileAlign">
                 <section className="userInfo">
                     <div className="namePencil">
-                        <span>Nome Sobrenome</span>
+                        <span>{name}</span>
                         <CreateOutlinedIcon />
                     </div>
-                    <p>email@dominio.com</p>
-                    <p>123.456.789.01</p>
+                    <p>{email}</p>
+                    <p>{cpf}</p>
                 </section>
 
                 <section className="addressContent">
                     <div>
                         <h4>Endereço Cadastrado</h4>
-                        <p>Rua Lorem Ipsum, 123 - Labenu</p>
+                        <p>{address}</p>
                     </div>
 
                     <CreateOutlinedIcon />
@@ -32,8 +46,9 @@ function ProfilePage() {
                 </section>
                 <h2>Historico de pedidos</h2>
                 <div style={{ width: "100%", borderBottom: "1px solid black" }} />
-                {/* Card de Pedidos*/}
-                <OrderCard />
+
+                <OrderCard userProfile={userProfile} />
+                
             </div>
         </div>
     )

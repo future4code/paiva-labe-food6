@@ -8,6 +8,7 @@ import CartPage from '../pages/CartPage/CardPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import RestaurantPage from '../pages/RestaurantPage/RestaurantPage';
 import LoadingPage from '../pages/LoadingPage/LoadingPage';
+import HomeInitial from '../pages/HomePage/HomeInitial'
 
 function Router() {
     return (
@@ -15,7 +16,7 @@ function Router() {
             <Switch>
 
                 <Route exact path="/">
-                    <LoadingPage />
+                    <HomeInitial />
                 </Route>
 
                 <Route exact path="/login">

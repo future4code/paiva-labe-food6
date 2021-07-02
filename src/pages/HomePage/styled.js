@@ -20,3 +20,21 @@ div{
     justify-content: space-around;
 }
 `
+
+export const PageHomeInitial= styled.div` 
+@media(max-width: 600px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    background-color: black ;
+    width: auto;
+    height: 100vh;
+
+    img {
+        
+        width: 43%;
+        height:16%;
+    }
+
+}
+` 

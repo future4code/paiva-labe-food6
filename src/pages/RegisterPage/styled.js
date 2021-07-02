@@ -6,13 +6,14 @@ export const PageRegister = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;  
-    margin-top:25%;
+    margin-top:5%;
 
     p{
       font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       font-weight:normal;
       font-size: 16px;
       color: black;
+      margin-top:10%;
     } 
     
 

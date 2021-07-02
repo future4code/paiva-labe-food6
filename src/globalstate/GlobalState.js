@@ -3,11 +3,11 @@ import { GlobalStateContext } from "./GlobalStateContext"
 import { useGetProfile } from '../requests/useGetProfile'
 import { useGetActiveOrder } from '../requests/getActiveOrder'
 import axios from "axios"
-import {BASE_URL} from "../constants/constants"
+import { BASE_URL } from "../constants/constants"
 
 function GlobalState(props) {
     const [carrinho, setCarrinho] = useState([{}])
-    const [restaurants,setRestaurants] = useState([{}])
+    const [restaurants, setRestaurants] = useState([{}])
 
     const { userProfile, getProfile } = useGetProfile({})
     const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
@@ -31,7 +31,7 @@ function GlobalState(props) {
 
 
     return (
-        <GlobalStateContext.Provider value={{userProfile, restaurants, getRestaurants, activeOrder}}>
+        <GlobalStateContext.Provider value={{ userProfile, getProfile, restaurants, getRestaurants, activeOrder }}>
             {props.children}
         </GlobalStateContext.Provider>
     )

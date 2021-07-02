@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalStateContext } from "./GlobalStateContext"
-import { useGetProfile } from '../requests/useGetProfile'
-import { useGetActiveOrder } from '../requests/getActiveOrder'
 import axios from "axios"
-import { BASE_URL } from "../constants/constants"
+
+import {BASE_URL} from "../constants/constants"
+import { CardText } from '../components/Card/style'
 
 function GlobalState(props) {
-    const [carrinho, setCarrinho] = useState([{}])
-    const [restaurants, setRestaurants] = useState([{}])
+    const [cart,setCart] = useState([])
+    const [restaurants,setRestaurants] = useState([{}])
+    const [restaurantDetail, setRestaurantDetail] = useState({})
 
-    const { userProfile, getProfile } = useGetProfile({})
-    const { activeOrder, ActiveOrder } = useGetActiveOrder([{}])
-
+    const token = localStorage.getItem("token")
+    //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
-
+        
         axios.get(`${BASE_URL}/restaurants`, {
             headers: {
-                auth: localStorage.getItem('token')
+                auth: token
             }
         }
         )
@@ -28,10 +28,51 @@ function GlobalState(props) {
                 alert(err.response.data.message)
             })
     }
+    //RESGATA DETALHES DO RESTAURANTE/////////////////////////////////////////////////////
+    const getRestaurantDetails = (id) => {
+        axios.get(`${BASE_URL}/restaurants/${id}`, {
+            headers: {
+                auth: token
+            }
+        })
+        .then((res) => {
+            console.log(res.data)
+            setRestaurantDetail(res.data)
+        })
+        .catch((err) => {
+            alert(err.response.data)
+        })
+
+    }
+    //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
+    const makeCart = (product,qntd) => {
+        const cartProduct = {}
+
+        cartProduct.product = product
+        cartProduct.qnt = qntd
 
 
+        setCart([...cart,cartProduct])
+
+    }
+
+    useEffect(() => {
+        if(cart && cart.length > 0){ //Caso Cart tenha conteudo, envia para localStorage
+
+            localStorage.setItem("cart", JSON.stringify(cart))
+
+        }else if(cart.length <= 0 && localStorage.getItem("cart")
+                                && localStorage.getItem("cart").length){//Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
+
+            setCart(JSON.parse(localStorage.getItem("cart")))
+        }
+    },[cart])
+
+    
     return (
-        <GlobalStateContext.Provider value={{ userProfile, getProfile, restaurants, getRestaurants, activeOrder }}>
+
+        <GlobalStateContext.Provider value={{restaurants,restaurantDetail, getRestaurants,getRestaurantDetails,makeCart}}>
+
             {props.children}
         </GlobalStateContext.Provider>
     )

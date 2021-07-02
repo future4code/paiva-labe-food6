@@ -14,8 +14,8 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 
 function HomePage() {
     useProtectedPage()
-    const history= useHistory()
-    const {restaurants,getRestaurants} = useContext(GlobalStateContext)
+    const history = useHistory()
+    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
 
     console.log(restaurants)
 
@@ -23,12 +23,12 @@ function HomePage() {
         getRestaurants()
     }, [])
 
-    const verDetalhe=(id)=>{
+    const verDetalhe = (id) => {
         gotoRest(history, id)
 
     }
     const showRestaurants = restaurants && restaurants.map((rest) => {
-        return <CardRest onClick={()=> verDetalhe(rest.id)} key={rest.id}>
+        return <CardRest onClick={() => verDetalhe(rest.id)} key={rest.id}>
             <img src={rest.logoUrl} alt="foto-do-prato" />
             <h1>{rest.name}</h1>
             <div>

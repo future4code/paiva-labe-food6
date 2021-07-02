@@ -22,6 +22,7 @@ function RestaurantPage() {
         return (
             <CardProduto
                 product= {product}
+                restaurantId = {params.id}
             />
         )
     })

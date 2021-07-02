@@ -35,7 +35,6 @@ function GlobalState(props) {
             }
         })
         .then((res) => {
-            console.log(res.data)
             setRestaurantDetail(res.data)
         })
         .catch((err) => {
@@ -44,11 +43,12 @@ function GlobalState(props) {
 
     }
     //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
-    const makeCart = (product,qntd) => {
+    const makeCart = (product,qntd,resID) => {
         const cartProduct = {}
 
         cartProduct.product = product
         cartProduct.qnt = qntd
+        cartProduct.resID = resID
 
 
         setCart([...cart,cartProduct])

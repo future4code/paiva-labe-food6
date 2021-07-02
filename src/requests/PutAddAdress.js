@@ -1,6 +1,6 @@
 import axios from "axios";
-import {BASE_URL} from "../constants/constants"
-import {gotoHome} from "../router/cordination"
+import { BASE_URL } from "../constants/constants"
+import { gotoHome } from "../router/cordination"
 
 
 export const addAdress = (body, clear, history) => {
@@ -8,7 +8,7 @@ export const addAdress = (body, clear, history) => {
 
     axios.put(`${BASE_URL}/address`, body, {
         headers: {
-            auth:localStorage.getItem("token")
+            auth: localStorage.getItem("token")
         }
     })
         .then((res) => {
@@ -18,7 +18,6 @@ export const addAdress = (body, clear, history) => {
             clear()
         })
         .catch((err) => {
-            alert(err.response.data)
+            console.log(err)
         })
-
 }

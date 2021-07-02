@@ -7,11 +7,14 @@ function LoadingPage() {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
-        if (token === null) {
-            gotoLogin(history)
-        } else {
-            goToHomePage(history)
-        }
+        setTimeout(() => {
+            if (token === null) {
+                gotoLogin(history)
+            } else {
+                goToHomePage(history)
+            }
+        }, 1000)
+
     }, [])
 
     return (

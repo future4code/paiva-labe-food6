@@ -7,13 +7,11 @@ import { CardProduct,ProcutImg,
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 const CardProduto = ({product,qntd,restaurantId}) => {
-    const {name,description,photoUrl,price} = product
+    const {name,description,photoUrl,price,id} = product
     const [open,setOpen] = useState(false)
     const [inCart,setInCart] = useState(false)
 
-
-
-    const {cart} = useContext(GlobalStateContext)
+    const {cart,deleted,removeCart} = useContext(GlobalStateContext)
 
 
     let valor = price.toString().replace(".",",")
@@ -30,14 +28,14 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
 
     useEffect(() => {
+        console.log("deleted")
         for (let i = 0;i < cart.length; i++){
 
             if(cart[i].product.id === id){
-                console.log(cart[i].product.id,id)
                 setInCart(true)
             }
         }
-    }, [])
+    }, [cart,deleted])
 
 
 
@@ -55,7 +53,7 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
                     <AddProduct>
                         <Price>R${valor}</Price>
-                        <AddButton inCart = {inCart} onClick = {() =>setOpen(true)}>{!inCart? "Adicionar":"Remover"}</AddButton>
+                        <AddButton inCart = {inCart} onClick = { () => { !inCart ? setOpen(true):removeCart(id) }}>{!inCart? "Adicionar":"Remover"}</AddButton>
                     </AddProduct>
                 </ProductDetail>
 

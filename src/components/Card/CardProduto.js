@@ -6,13 +6,15 @@ import { CardProduct,ProcutImg,
         Price,Description} from './style'
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
-const CardProduto = ({product}) => {
-    const {name,description,id,photoUrl,price} = product
+const CardProduto = ({product,qntd,restaurantId}) => {
+    const {name,description,photoUrl,price} = product
     const [open,setOpen] = useState(false)
     const [inCart,setInCart] = useState(false)
 
 
+
     const {cart} = useContext(GlobalStateContext)
+
 
     let valor = price.toString().replace(".",",")
 
@@ -48,6 +50,7 @@ const CardProduto = ({product}) => {
                 
                 <ProductDetail>
                     <h3>{name}</h3>
+                    {qntd && (<div><p>{qntd}</p></div>)}
                     <Description>{description}</Description>
 
                     <AddProduct>
@@ -69,6 +72,7 @@ const CardProduto = ({product}) => {
 
                 <ModalComponent
                     product = {product}
+                    resID = {restaurantId}
                     close = {() => closeButton(false)}
                 />
             </Modal>

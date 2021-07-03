@@ -11,6 +11,7 @@ import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import CardRestaurant from '../../components/Card/CardRes';
 
 function HomePage() {
     useProtectedPage()
@@ -55,14 +56,15 @@ function HomePage() {
     )
 
     const showRestaurants = restaurants && restaurants.map((rest) => {
-        return <CardRest onClick={() => verDetalhe(rest.id)} key={rest.id}>
-            <img src={rest.logoUrl} alt="foto-do-prato" />
-            <h1>{rest.name}</h1>
-            <div>
-                <p>+-{rest.deliveryTime}min</p>
-                <p>Frete R${rest.shipping}</p>
+
+        return(
+            <div onClick={()=> verDetalhe(rest.id)} key={rest.id}>
+            <CardRestaurant
+                restaurants = {rest}
+            />
+
             </div>
-        </CardRest>
+        )
     })
 
     return (

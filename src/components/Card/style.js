@@ -5,15 +5,29 @@ export const CardRes = styled.div`
     flex-direction: column;
     border: 1px solid #b8b8b8;
     border-radius: 10px;
-
-    img{
-        object-fit:contain
-    }
-
+    margin:1rem;
+    height:15rem;
 `
 
-export const CardText = styled.h5`
+export const ResImg = styled.img`
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+`
+export const DetailsArea = styled.div`
+    padding:1rem;
+`
+
+export const CardText = styled.p`
     color: ${props => props.titulo ? "#5cb646":"#b8b8b8"};
+    font-weight: 500;
 `
 
 export const DeliverySpace = styled.div`

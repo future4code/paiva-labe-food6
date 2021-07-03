@@ -20,59 +20,80 @@ function AddressPage() {
 
     return (
         <div> <Header />
-            <h4>Meu endereço</h4>
-            <form onSubmit={onSubmit}>
-                <TextInput
-                    type="text"
-                    name="street"
-                    value={body.street}
-                    label="rua"
-                    onChange={onChange}
-                    required />
+        
+            <PageRegister>
+            <p>Meu endereço</p>
+                <form onSubmit={onSubmit}>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="street"
+                            value={body.street}
+                            label="Logradouro"
+                            placeholder="Rua / Av"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="number"
+                            name="street"
+                            value={body.number}
+                            label="Número"
+                            placeholder="Número"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="string"
+                            name="neighbourhood"
+                            value={body.neighbourhood}
+                            label="Complemento"
+                            placeholder="Apt / Bloco"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
 
-                <TextInput
-                    type="number"
-                    name="number"
-                    value={body.number}
-                    label="numero"
-                    onChange={onChange}
-                    required />
+                        <TextInput
+                            type="text"
+                            name="neighbourhood"
+                            value={body.neighbourhood}
+                            label="Bairro"
+                            placeholder="Bairro"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
 
-                <TextInput
-                    type="text"
-                    name="neighbourhood"
-                    value={body.neighbourhood}
-                    label="bairo"
-                    onChange={onChange}
-                    required />
+                        <TextInput
+                            type="text"
+                            name="city"
+                            value={body.city}
+                            label="Cidade"
+                            placeholder="Cidade"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    <FormContainer>
 
-                <TextInput
-                    type="text"
-                    name="city"
-                    value={body.city}
-                    label="cidade"
-                    onChange={onChange}
-                    required />
+                        <TextInput
+                            type="text"
+                            name="state"
+                            value={body.state}
+                            label="Estado"
+                            placeholder="Estado"
+                            onChange={onChange}
+                            required />
+                    </FormContainer>
+                    
+                    <Button
+                        fullWidth
+                    >Cadastrar</Button>
+                </form>
+            </PageRegister>
 
-                <TextInput
-                    type="text"
-                    name="state"
-                    value={body.state}
-                    label="estado"
-                    onChange={onChange}
-                    required />
-
-                <TextInput
-                    type="text"
-                    name="complement"
-                    value={body.complement}
-                    label="complemento"
-                    onChange={onChange}
-                />
-                <Button
-                    fullWidth
-                >Cadastrar</Button>
-            </form>
 
         </div>
 

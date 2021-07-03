@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export function useGetProfile() {
     const token = localStorage.getItem("token")
-    const [userProfile, setUserProfile] = useState({})
+    const [userProfile, setUserProfile] = useState([])
 
     const getProfile = () => {
         axios.get(`${BASE_URL}/profile`, {
@@ -13,12 +13,13 @@ export function useGetProfile() {
             }
         })
             .then((res) => {
-                setUserProfile(res.data)
+                setUserProfile(res.data.user)
             })
             .catch((err) => {
-                console.log(err.response.data)
+                console.log(err.response)
             })
 
     }
+
     return {userProfile, getProfile}
 }

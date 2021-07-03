@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from '../../constants/constants';
 import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
-import { Container, CardRest } from './styled';
+import { Container, CardRest, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
@@ -15,8 +15,10 @@ import CardRestaurant from '../../components/Card/CardRes';
 
 function HomePage() {
     useProtectedPage()
-    const history= useHistory()
-    const {restaurants,getRestaurants} = useContext(GlobalStateContext)
+    const history = useHistory()
+    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
+    const [itensInFilter, setItensInFilter] = useState([])
+    const [isFiltred, setFiltred] = useState(false)
 
     console.log(restaurants)
 
@@ -24,25 +26,43 @@ function HomePage() {
         getRestaurants()
     }, [])
 
-    const verDetalhe=(id)=>{
-        gotoRest(history, id)
 
+    const verDetalhe = (id) => {
+        gotoRest(history, id)
     }
+    const chooseFilter = (category) => {
+
+        restaurants.filter(choosed => {
+            if (choosed.category === category) {
+                setItensInFilter([choosed])
+                setFiltred(true)
+            }
+            return true
+        })
+    }
+
+    const restaurantFIlter = itensInFilter.length && itensInFilter.map((item) => {
+        return (
+            <CardRest onClick={() => verDetalhe(item.id)} key={item.id}>
+                <img src={item.logoUrl} alt="foto-do-prato" />
+                <h1>{item.name}</h1>
+                <div>
+                    <p>+-{item.deliveryTime}min</p>
+                    <p>Frete R${item.shipping}</p>
+                </div>
+            </CardRest>
+        )
+    }
+    )
+
     const showRestaurants = restaurants && restaurants.map((rest) => {
-        // return <CardRest onClick={()=> verDetalhe(rest.id)} key={rest.id}>
-        //     <img src={rest.logoUrl} alt="foto-do-prato" />
-        //     <h1>{rest.name}</h1>
-        //     <div>
-        //         <p>+-{rest.deliveryTime}min</p>
-        //         <p>Frete R${rest.shipping}</p>
-        //     </div>
-        // </CardRest>
 
         return(
             <div onClick={()=> verDetalhe(rest.id)} key={rest.id}>
             <CardRestaurant
                 restaurants = {rest}
             />
+
             </div>
         )
     })
@@ -56,10 +76,18 @@ function HomePage() {
                 fullWidth
                 variant="outlined"
             />
+            <Filter>
+                <p onClick={() => setFiltred(false)}>Tudo</p>
+                {restaurants && restaurants.map((result) => {
+                    return <p id={result.id} onClick={() => chooseFilter(result.category)}>{result.category}</p>
+                })}
+            </Filter>
+
+
             <Container>
-                {showRestaurants}
+                {isFiltred ? <div style={{width: "95%", margin: "0 auto"}}>{restaurantFIlter}</div> : <div style={{width: "95%", margin: "0 auto"}}>{showRestaurants}</div>}
             </Container>
-        </div>
+        </div >
 
     )
 }

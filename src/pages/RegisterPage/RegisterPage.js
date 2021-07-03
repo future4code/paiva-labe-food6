@@ -19,7 +19,8 @@ function RegisterPage() {
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
-        passwordClick: ""
+        showConfirm: false,
+        
     });
 
     const history = useHistory()
@@ -37,26 +38,28 @@ function RegisterPage() {
         setValues({ ...values, showPassword: !values.showPassword });
     };
 
-    const handleShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
+    const handleShowPasswordConfirm = () => {
+        setValues({ ...values, showConfirm: !values.showConfirm });
     };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+    const handleMouseDownConfirm = (event) => {
+        event.preventDefault();
+      };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (body.password === values.passwordClick) {
+        if (body.password === body.passwordClick) {
 
-            SignUpRequest(body, clear, history, values);
+            SignUpRequest(body, clear, history);
         } else {
             alert("Senhas incompatíveis")
         }
 
     }
-    console.log(body)
-    console.log(values.passwordClick)
+    
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />
@@ -98,10 +101,15 @@ function RegisterPage() {
                             <OutlinedInput
                                 type="string"
                                 name="cpf"
+                                inputProps={{
+                                    maxLength: 14,
+                                    pattern: `([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})`,
+                                  }}
                                 value={body.string}
                                 placeholder="000.000.000-00"
                                 onChange={onChange}
                                 required
+                                variant="outlined"
                                 labelWidth={100}
                             />
                         </FormControl>
@@ -142,8 +150,8 @@ function RegisterPage() {
                             <InputLabel htmlFor="outlined-adornment-passwordClick">Confirmar*</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-passwordClick"
-                                type={values.showPassword ? 'text' : 'password'}
-                                value={values.passwordClick}
+                                type={values.showConfirm ? "text" : "password"}
+                                value={body.passwordClick}
                                 placeholder="Inserir a senha anterior"
                                 onChange={handleChange('passwordClick')}
                                 required
@@ -151,11 +159,11 @@ function RegisterPage() {
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="toggle password visibility"
-                                            onClick={handleShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
+                                            onClick={handleShowPasswordConfirm}
+                                            onMouseDown={handleMouseDownConfirm}
                                             edge="end"
                                         >
-                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                            {values.showConfirm ? <Visibility /> : <VisibilityOff />}
                                         </IconButton>
                                     </InputAdornment>
                                 }
@@ -167,7 +175,7 @@ function RegisterPage() {
 
 
                 </FormContainer>
-                <Button type="submit">Criar</Button>
+                <Button type="submit" fullWidth>Criar</Button>
             </form>
 
         </PageRegister >

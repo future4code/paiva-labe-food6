@@ -16,16 +16,16 @@ export function LoginRequest(body, clear, history) {
         })
 }
 
-export function SignUpRequest(body, clear, history, values) {
+export function SignUpRequest(body, clear, history) {
     console.log(body)
     axios.post(`${BASE_URL}/signup`, body)
         .then((res) => {
             localStorage.setItem("token", res.data.token)
+            alert("Conta criada com sucesso!");
             gotoAddress(history)
             clear()
-            values()
         })
         .catch((err) => {
-            console.log(err.response.data)
+            console.log(err)
         })
 }

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalStateContext } from "./GlobalStateContext"
 import axios from "axios"
-import {BASE_URL} from "../constants/constants"
+
+import { BASE_URL } from "../constants/constants"
 import { CardText } from '../components/Card/style'
 
 function GlobalState(props) {
-    const [cart,setCart] = useState([])
-    const [restaurants,setRestaurants] = useState([{}])
+    const [cart, setCart] = useState([])
+    const [restaurants, setRestaurants] = useState([{}])
     const [restaurantDetail, setRestaurantDetail] = useState({})
 
-    const token = localStorage.getItem("token")
+
+
     //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
-        
+        const token = localStorage.getItem("token")
+
         axios.get(`${BASE_URL}/restaurants`, {
             headers: {
                 auth: token
@@ -29,11 +32,13 @@ function GlobalState(props) {
     }
     //RESGATA DETALHES DO RESTAURANTE/////////////////////////////////////////////////////
     const getRestaurantDetails = (id) => {
+        const token = localStorage.getItem("token")
         axios.get(`${BASE_URL}/restaurants/${id}`, {
             headers: {
                 auth: token
             }
         })
+
         .then((res) => {
             setRestaurantDetail(res.data)
         })
@@ -44,6 +49,7 @@ function GlobalState(props) {
     }
     //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
     const makeCart = (product,qntd,resID) => {
+
         const cartProduct = {}
 
         cartProduct.product = product
@@ -51,25 +57,28 @@ function GlobalState(props) {
         cartProduct.resID = resID
 
 
-        setCart([...cart,cartProduct])
+        setCart([...cart, cartProduct])
 
     }
 
     useEffect(() => {
-        if(cart && cart.length > 0){ //Caso Cart tenha conteudo, envia para localStorage
+        if (cart && cart.length > 0) { //Caso Cart tenha conteudo, envia para localStorage
 
             localStorage.setItem("cart", JSON.stringify(cart))
 
-        }else if(cart.length <= 0 && localStorage.getItem("cart")
-                                && localStorage.getItem("cart").length){//Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
+        } else if (cart.length <= 0 && localStorage.getItem("cart")
+            && localStorage.getItem("cart").length) {//Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
 
             setCart(JSON.parse(localStorage.getItem("cart")))
         }
-    },[cart])
 
-    
+    }, [cart])
+
+
     return (
-        <GlobalStateContext.Provider value={{restaurants,restaurantDetail, getRestaurants,getRestaurantDetails,makeCart}}>
+
+        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail, getRestaurants, getRestaurantDetails, makeCart }}>
+
             {props.children}
         </GlobalStateContext.Provider>
     )

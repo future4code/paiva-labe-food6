@@ -1,7 +1,9 @@
 import React from 'react';
 import './ordercard.scss';
 
-function OrderCard() {
+function OrderCard({ userProfile }) {
+    console.log(userProfile)
+
     return (
         <div id="orderContainer">
             <div className="orderCard">

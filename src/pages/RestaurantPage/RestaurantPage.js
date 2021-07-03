@@ -11,11 +11,12 @@ function RestaurantPage() {
     useProtectedPage()
 
     const params = useParams()
-    const { restaurantDetail, getRestaurantDetails } = useContext(GlobalStateContext)
+    const { restaurantDetail, getRestaurantDetails,cart } = useContext(GlobalStateContext)
 
     useEffect(() => {
+        console.log('oi')
         getRestaurantDetails(params.id)
-    }, [])
+    }, [cart])
 
 
     const productsList = restaurantDetail.restaurant && restaurantDetail.restaurant.products.map((product) => {

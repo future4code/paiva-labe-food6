@@ -20,8 +20,6 @@ function HomePage() {
     const [itensInFilter, setItensInFilter] = useState([])
     const [isFiltred, setFiltred] = useState(false)
 
-    console.log(restaurants)
-
     useEffect(() => {
         getRestaurants()
     }, [])

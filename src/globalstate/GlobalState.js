@@ -77,7 +77,7 @@ function GlobalState(props) {
 
     return (
 
-        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail, getRestaurants, getRestaurantDetails, makeCart }}>
+        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail,cart, getRestaurants, getRestaurantDetails, makeCart }}>
 
             {props.children}
         </GlobalStateContext.Provider>

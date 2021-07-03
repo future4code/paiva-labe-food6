@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Modal from "@material-ui/core/Modal";
 import ModalComponent from "../Modal/Modal"
 import { CardProduct,ProcutImg,
         ProductDetail,AddProduct,AddButton,
         Price,Description} from './style'
+import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 const CardProduto = ({product,qntd,restaurantId}) => {
     const {name,description,photoUrl,price} = product
     const [open,setOpen] = useState(false)
+    const [inCart,setInCart] = useState(false)
+
+
+
+    const {cart} = useContext(GlobalStateContext)
+
 
     let valor = price.toString().replace(".",",")
 
@@ -20,6 +27,18 @@ const CardProduto = ({product,qntd,restaurantId}) => {
     const closeButton = () => {
         setOpen(false)
     }
+
+
+    useEffect(() => {
+        for (let i = 0;i < cart.length; i++){
+
+            if(cart[i].product.id === id){
+                console.log(cart[i].product.id,id)
+                setInCart(true)
+            }
+        }
+    }, [])
+
 
 
     return (
@@ -36,7 +55,7 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
                     <AddProduct>
                         <Price>R${valor}</Price>
-                        <AddButton onClick = {() =>setOpen(true)}>Adicionar</AddButton>
+                        <AddButton inCart = {inCart} onClick = {() =>setOpen(true)}>{!inCart? "Adicionar":"Remover"}</AddButton>
                     </AddProduct>
                 </ProductDetail>
 

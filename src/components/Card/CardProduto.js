@@ -3,7 +3,9 @@ import Modal from "@material-ui/core/Modal";
 import ModalComponent from "../Modal/Modal"
 import { CardProduct,ProcutImg,
         ProductDetail,AddProduct,AddButton,
-        Price,Description} from './style'
+        Price,Description,TituloQnt,Qntd,
+        Title} from './style'
+
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 const CardProduto = ({product,qntd,restaurantId}) => {
@@ -11,7 +13,7 @@ const CardProduto = ({product,qntd,restaurantId}) => {
     const [open,setOpen] = useState(false)
     const [inCart,setInCart] = useState(false)
 
-    const {cart,deleted,removeCart} = useContext(GlobalStateContext)
+    const {cart,removeCart} = useContext(GlobalStateContext)
 
 
     let valor = price.toString().replace(".",",")
@@ -28,14 +30,13 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
 
     useEffect(() => {
-        console.log("deleted")
         for (let i = 0;i < cart.length; i++){
 
             if(cart[i].product.id === id){
                 setInCart(true)
             }
         }
-    }, [cart,deleted])
+    }, [cart])
 
 
 
@@ -47,8 +48,10 @@ const CardProduto = ({product,qntd,restaurantId}) => {
                 </div>
                 
                 <ProductDetail>
-                    <h3>{name}</h3>
-                    {qntd && (<div><p>{qntd}</p></div>)}
+                    <TituloQnt>
+                        <Title>{name}</Title>
+                        {qntd && (<Qntd><p>{qntd}</p></Qntd>)}
+                    </TituloQnt>
                     <Description>{description}</Description>
 
                     <AddProduct>

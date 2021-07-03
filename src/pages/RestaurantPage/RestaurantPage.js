@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CardProduto from '../../components/Card/CardProduto';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
+import {Details,DeliverySpace,ResLogo} from "./style"
 
 function RestaurantPage() {
 
@@ -14,11 +15,10 @@ function RestaurantPage() {
     const { restaurantDetail, getRestaurantDetails,cart } = useContext(GlobalStateContext)
 
     useEffect(() => {
-        console.log('oi')
         getRestaurantDetails(params.id)
-    }, [cart])
+    }, [])
 
-
+    console.log(restaurantDetail)
     const productsList = restaurantDetail.restaurant && restaurantDetail.restaurant.products.map((product) => {
         return (
             <CardProduto
@@ -28,11 +28,26 @@ function RestaurantPage() {
         )
     })
 
-    return (
-        <div>
-            <h1>Oi eu sou a RestaurantPage</h1>
-            {productsList && productsList}
-        </div>
-    )
+    if(restaurantDetail.restaurant){
+        return (
+            <Details>
+                <ResLogo src = {restaurantDetail.restaurant.logoUrl}/>
+                <h3>{restaurantDetail.restaurant.name}</h3>
+                <p>{restaurantDetail.restaurant.description}</p>
+                <DeliverySpace>
+                    <p>{restaurantDetail.restaurant.deliveryTime} min</p>
+                    <p>Frete R${restaurantDetail.restaurant.shipping}</p>
+                </DeliverySpace>
+                <p>{restaurantDetail.restaurant.address}</p>
+                {productsList && productsList}
+            </Details>
+        )
+    }else{
+        return(
+            <h1>Carregando...</h1>
+        )
+    }
+
+
 }
 export default RestaurantPage;

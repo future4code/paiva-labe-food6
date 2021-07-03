@@ -21,9 +21,7 @@ export const gotoProfile = (history) => {
 export const gotoRest = (history, id) => {
     history.push(`/restaurante/${id}`)
 }
-export const goToHomePage = (history) => {
-    history.push(`/pagina-inicial`)
-}
+
 export const gotoBack = (history) => {
     history.back()
 }

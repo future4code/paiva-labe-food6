@@ -3,16 +3,12 @@ import { GlobalStateContext } from "./GlobalStateContext"
 import axios from "axios"
 
 import { BASE_URL } from "../constants/constants"
-import { CardText } from '../components/Card/style'
-import { fireEvent } from '@testing-library/react'
+
 
 function GlobalState(props) {
     const [cart, setCart] = useState([])
     const [restaurants, setRestaurants] = useState([{}])
     const [restaurantDetail, setRestaurantDetail] = useState({})
-    const [deleted,setDeleted] = useState(false)
-
-
 
     //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
@@ -66,7 +62,6 @@ function GlobalState(props) {
     //REMOVE DO CARRINHO/////////////////////////////////////////////////////////////
     const removeCart = (id) => {
         let novaLista = [...cart]
-        setDeleted(true)
         for(let i = 0;i < novaLista.length; i++){   
             if(novaLista[i].product.id === id){
                 if(novaLista.length === 1){
@@ -77,7 +72,7 @@ function GlobalState(props) {
                     setCart(novaLista)
             }
         }
-
+        document.location.reload();
     }
 
     useEffect(() => {
@@ -96,7 +91,7 @@ function GlobalState(props) {
 
     return (
 
-        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail,cart,deleted, getRestaurants, getRestaurantDetails, makeCart,removeCart }}>
+        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail,cart, getRestaurants, getRestaurantDetails, makeCart,removeCart }}>
 
             {props.children}
         </GlobalStateContext.Provider>

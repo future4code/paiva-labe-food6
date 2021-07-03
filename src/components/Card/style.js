@@ -25,6 +25,33 @@ export const DetailsArea = styled.div`
     padding:1rem;
 `
 
+export const TituloQnt = styled.div`
+    display:flex;
+    justify-content: space-between;
+`
+
+export const Title = styled.h3`
+    padding-top: 1rem;
+`
+
+export const Qntd = styled.div`
+    padding: 0.5rem 1rem;
+    border: 1px solid #5cb646;
+
+    p{
+        color: #5cb646;
+        font-weight: bold;
+    }
+
+
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+`
+
 export const CardText = styled.p`
     color: ${props => props.titulo ? "#5cb646":"#b8b8b8"};
     font-weight: 500;
@@ -38,7 +65,7 @@ export const DeliverySpace = styled.div`
 
 export const CardProduct = styled.div`
     display:flex;
-    height:10rem;
+    height:auto;
     margin: 1rem;
 
     border-radius: 10px;
@@ -69,7 +96,6 @@ export const ProductDetail = styled.div`
     justify-content: space-between;
     width:100%;
     padding-left: 1rem;
-    padding-top:1rem;
 `
 
 export const Description = styled.p`

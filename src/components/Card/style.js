@@ -75,15 +75,17 @@ export const AddProduct = styled.div`
 
 export const AddButton = styled.button`
     background: none;
-    color: #5cb646;
+    color:${props => props.inCart ? "#e02020":"#5cb646"} ;
+
+
     padding:0.5rem 1rem;
     margin:none;
-    border: 1px solid #5cb646;
+    border: 1px solid ${props => props.inCart ? "#e02020":"#5cb646"};
     -webkit-border-top-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 8px;
     -moz-border-radius-topleft: 10px;
-    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomright: 8px;
     border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 8px;
 `
 

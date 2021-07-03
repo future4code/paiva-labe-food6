@@ -1,23 +1,22 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import React, {  useLayoutEffect, useState } from 'react';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 import CartPage from '../../components/Cart/Cart';
 import TituloPage from '../../components/Cart/TituloPage'
 import AddressCart from '../../components/Cart/AddressCart'
 import { Button } from '../../components/Button/Button';
-import FooterCart from '../../components/Cart/Footer';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import CardProduto from '../../components/Card/CardProduto';
 import axios from "axios"
 import { BASE_URL } from '../../constants/constants';
+import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Button/Footer';
 
 
 function CardPage() {
   useProtectedPage()
-
+  const history = useHistory()
   const [cart,setCart] = useState([])
   const [payment,setPayment] = useState("")
-  const [idList,setIDList] = useState([])
-
 
   useLayoutEffect(() => {
     getLocalStore()
@@ -82,8 +81,10 @@ function CardPage() {
 
         
       ): "Carrinho Vazio"}
-      <FooterCart />
 
+      <Footer 
+        history = {history}
+      />
     </div>
 
 

@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { BASE_URL } from '../../constants/constants';
 import SearchIcon from '@material-ui/icons/Search';
 import { Container, CardRest, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
@@ -12,6 +11,7 @@ import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
+import Footer from '../../components/Button/Footer';
 
 function HomePage() {
     useProtectedPage()
@@ -90,6 +90,10 @@ function HomePage() {
             <Container>
                 {isFiltred ? <div style={{width: "95%", margin: "0 auto"}}>{restaurantFIlter}</div> : <div style={{width: "95%", margin: "0 auto"}}>{showRestaurants}</div>}
             </Container>
+
+            <Footer 
+                history = {history}
+            />
         </div >
 
     )

@@ -19,7 +19,7 @@ function ModalComponent(props) {
         <select onChange = {handleQntd}>
           <OptionQntd/>
         </select>
-        <button onClick = {() => makeCart(props.product,qntd)} >Adicionar ao Carrinho</button>
+        <button onClick = {() => makeCart(props.product,qntd,props.resID)} >Adicionar ao Carrinho</button>
     </ModalBody>
   )
 }

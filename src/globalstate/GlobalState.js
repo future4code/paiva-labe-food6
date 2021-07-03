@@ -38,21 +38,23 @@ function GlobalState(props) {
                 auth: token
             }
         })
-            .then((res) => {
-                console.log(res.data)
-                setRestaurantDetail(res.data)
-            })
-            .catch((err) => {
-                alert(err.response.data)
-            })
+
+        .then((res) => {
+            setRestaurantDetail(res.data)
+        })
+        .catch((err) => {
+            alert(err.response.data)
+        })
 
     }
     //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
-    const makeCart = (product, qntd) => {
+    const makeCart = (product,qntd,resID) => {
+
         const cartProduct = {}
 
         cartProduct.product = product
         cartProduct.qnt = qntd
+        cartProduct.resID = resID
 
 
         setCart([...cart, cartProduct])

@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { PageCart, useStyles, FormaPag, DivHr, DivCartBody, DivTituloCart, DivFrete, DivSubTotal, DivValorTotal,DivContainerValor } from '../../pages/CartPage/styled';
 
-function CartPage() {
+function CartPage(props) {
     function StyledRadio(props) {
         const classes = useStyles();
         return (
@@ -23,20 +23,6 @@ function CartPage() {
 
     return (
         <PageCart>
-            <DivCartBody>
-                <DivTituloCart>
-                    Carinho Vazio
-                </DivTituloCart>
-                <DivFrete>
-                    Frete R$0,00
-                </DivFrete>
-                <DivContainerValor>
-                    <DivSubTotal>SUBTOTAL</DivSubTotal>
-                    <DivValorTotal>R$00,00</DivValorTotal>
-                </DivContainerValor>
-
-            </DivCartBody>
-
 
             <FormControl component="fieldset">
                 <FormaPag>
@@ -45,9 +31,9 @@ function CartPage() {
                 <DivHr />
 
 
-                <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="female" control={<StyledRadio />} label="Dinheiro" />
-                    <FormControlLabel value="male" control={<StyledRadio />} label="Cartão de Crédito" />
+                <RadioGroup onChange = {props.Payment} defaultValue="female" aria-label="gender" name="customized-radios">
+                    <FormControlLabel  value="money" control={<StyledRadio />} label="Dinheiro" />
+                    <FormControlLabel  value="creditcard" control={<StyledRadio />} label="Cartão de Crédito" />
                 </RadioGroup>
             </FormControl>
 

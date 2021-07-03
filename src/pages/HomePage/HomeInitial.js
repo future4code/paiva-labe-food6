@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHomeInitial} from '../../pages/HomePage/styled'
+import { PageHomeInitial } from '../../pages/HomePage/styled'
 
 function HomeInitial() {
     return (

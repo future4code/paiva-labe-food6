@@ -5,6 +5,8 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import { useGetProfile } from '../../requests/useGetProfile';
 import { useGetActiveOrder } from '../../requests/getActiveOrder';
 import './profilepage.scss';
+import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Button/Footer';
 
 function ProfilePage() {
     useProtectedPage()
@@ -19,6 +21,8 @@ function ProfilePage() {
 
     console.log(userProfile)
     console.log(activeOrder)
+
+    const history = useHistory()
 
     return (
         <div id="profileContainer">
@@ -50,6 +54,11 @@ function ProfilePage() {
                 <OrderCard userProfile={userProfile} />
                 
             </div>
+
+            <Footer 
+                history = {history}
+            />
+
         </div>
     )
 }

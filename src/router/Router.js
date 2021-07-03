@@ -16,7 +16,7 @@ function Router() {
             <Switch>
 
                 <Route exact path="/">
-                    <HomeInitial />
+                    <LoadingPage />
                 </Route>
 
                 <Route exact path="/login">

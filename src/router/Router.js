@@ -7,8 +7,6 @@ import AddressPage from '../pages/RegisterPage/AddressPage';
 import CartPage from '../pages/CartPage/CardPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import RestaurantPage from '../pages/RestaurantPage/RestaurantPage';
-import LoadingPage from '../pages/LoadingPage/LoadingPage';
-import HomeInitial from '../pages/HomePage/HomeInitial'
 
 function Router() {
     return (
@@ -16,7 +14,7 @@ function Router() {
             <Switch>
 
                 <Route exact path="/">
-                    <HomeInitial />
+                    <HomePage />
                 </Route>
 
                 <Route exact path="/login">
@@ -29,10 +27,6 @@ function Router() {
 
                 <Route exact path="/registrar/endereco">
                     <AddressPage />
-                </Route>
-
-                <Route exact path="/pagina-inicial">
-                    <HomePage />
                 </Route>
 
                 <Route exact path="/carrinho">

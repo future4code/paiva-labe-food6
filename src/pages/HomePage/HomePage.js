@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { BASE_URL } from '../../constants/constants';
-import axios from 'axios';
 import SearchIcon from '@material-ui/icons/Search';
 import { Container, CardRest, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
@@ -12,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
+import HomeInitial from './HomeInitial';
 
 function HomePage() {
     useProtectedPage()
@@ -24,6 +24,7 @@ function HomePage() {
         getRestaurants()
     }, [])
 
+    console.log(restaurants)
 
     const verDetalhe = (id) => {
         gotoRest(history, id)
@@ -41,14 +42,12 @@ function HomePage() {
 
     const restaurantFIlter = itensInFilter.length && itensInFilter.map((item) => {
         return (
-            <CardRest onClick={() => verDetalhe(item.id)} key={item.id}>
-                <img src={item.logoUrl} alt="foto-do-prato" />
-                <h1>{item.name}</h1>
-                <div>
-                    <p>+-{item.deliveryTime}min</p>
-                    <p>Frete R${item.shipping}</p>
-                </div>
-            </CardRest>
+            <div onClick={()=> verDetalhe(item.id)} key={item.id}>
+            <CardRestaurant
+                restaurants = {item}
+            />
+
+            </div>
         )
     }
     )
@@ -64,6 +63,12 @@ function HomePage() {
             </div>
         )
     })
+
+    if(!restaurants[0].logoUrl){
+        return(
+            <HomeInitial/>
+        )
+    }
 
     return (
         <div>

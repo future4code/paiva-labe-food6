@@ -10,7 +10,7 @@ export const PageCart = styled.div`
     align-items: center;  
     margin-top:5%;
     margin-bottom: 50px;
-   
+  
 
     h5{
       font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

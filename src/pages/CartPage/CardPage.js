@@ -73,9 +73,15 @@ function CardPage() {
     <div>
       <TituloPage />
       <AddressCart />
-      {cartList}
-      <CartPage Payment = {handlePayment} />
-      <Button onClick = {BuyFood} >Confirmar</Button>
+      {cartList ? (
+        <div>
+          {cartList}
+          <CartPage Payment = {handlePayment} />
+          <Button  onClick = {BuyFood} >Confirmar</Button>
+        </div> 
+
+        
+      ): "Carrinho Vazio"}
       <FooterCart />
 
     </div>

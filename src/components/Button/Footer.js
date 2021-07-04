@@ -1,13 +1,13 @@
 import React from 'react';
 import {FooterContainer,Button} from './style'
-import {gotoHome,gotoCart,gotoProfile} from "../../router/cordination"
+import {goToHome,gotoCart,gotoProfile} from "../../router/cordination"
 
 function Footer(props) {
     return (
         
             <FooterContainer>
                 
-                <Button onClick = {() => gotoHome(props.history)}>
+                <Button onClick = {() => goToHome(props.history)}>
                 <img src="https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/E19FE52B-98DD-45E2-BC10-5EA201EBC89F.svg" alt="home" />
                 </Button>
 

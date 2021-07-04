@@ -7,6 +7,9 @@ import AddressPage from '../pages/RegisterPage/AddressPage';
 import CartPage from '../pages/CartPage/CardPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import RestaurantPage from '../pages/RestaurantPage/RestaurantPage';
+import LoadingPage from '../pages/LoadingPage/LoadingPage';
+import ChangeAddress from '../pages/ProfilePage/ChangeAddress/ChangeAddress';
+import ChangeInfoPage from '../pages/ProfilePage/ChangeInfo/ChangeInfoPage';
 
 function Router() {
     return (
@@ -14,7 +17,7 @@ function Router() {
             <Switch>
 
                 <Route exact path="/">
-                    <HomePage />
+                    <LoadingPage />
                 </Route>
 
                 <Route exact path="/login">
@@ -29,12 +32,24 @@ function Router() {
                     <AddressPage />
                 </Route>
 
+                <Route exact path="/pagina-inicial">
+                    <HomePage />
+                </Route>
+
                 <Route exact path="/carrinho">
                     <CartPage />
                 </Route>
 
                 <Route exact path="/perfil">
                     <ProfilePage />
+                </Route>
+
+                <Route exact path="/perfil/atualizar-endereco">
+                    <ChangeAddress />
+                </Route>
+
+                <Route exact path="/perfil/atualizar-info">
+                    <ChangeInfoPage />
                 </Route>
 
                 <Route exact path="/restaurante/:id">

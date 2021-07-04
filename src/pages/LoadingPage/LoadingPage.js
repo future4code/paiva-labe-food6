@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { goToHomePage, gotoLogin } from '../../router/cordination';
+import { goToHome, gotoLogin } from '../../router/cordination';
 import { PageHomeInitial } from '../HomePage/styled';
 
 function LoadingPage() {
@@ -12,7 +12,7 @@ function LoadingPage() {
             if (token === null) {
                 gotoLogin(history)
             } else {
-                goToHomePage(history)
+                goToHome(history)
             }
         }, 1000)
 

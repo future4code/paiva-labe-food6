@@ -4,16 +4,15 @@ import ModalComponent from "../Modal/Modal"
 import { CardProduct,ProcutImg,
         ProductDetail,AddProduct,AddButton,
         Price,Description,TituloQnt,Qntd,
-        Title} from './style'
+        Title,ResNote} from './style'
 
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 const CardProduto = ({product,qntd,restaurantId}) => {
     const {name,description,photoUrl,price,id} = product
     const [open,setOpen] = useState(false)
-    const [inCart,setInCart] = useState(false)
-
-    const {cart,removeCart} = useContext(GlobalStateContext)
+ 
+    const {cart,removeCart,activeOrder,getActiveOrder} = useContext(GlobalStateContext)
 
 
     let valor = price.toString().replace(".",",")
@@ -30,15 +29,30 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
 
     useEffect(() => {
+        getActiveOrder()
+
+    }, [cart])
+
+    function checkCartRes(){
+        if(cart[0] &&  restaurantId && cart[0].resID !== restaurantId){
+            return(false)
+        }else if (cart[0] && cart[0].resID === restaurantId){
+            return(true)
+        }
+        return(true)
+    }
+
+    function inCart(){
         for (let i = 0;i < cart.length; i++){
 
             if(cart[i].product.id === id){
-                setInCart(true)
+                return(true)
+            }else{
+                return(false)
             }
         }
-    }, [cart])
 
-
+    }
 
     return (
         <div>
@@ -56,7 +70,22 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
                     <AddProduct>
                         <Price>R${valor}</Price>
-                        <AddButton inCart = {inCart} onClick = { () => { !inCart ? setOpen(true):removeCart(id) }}>{!inCart? "Adicionar":"Remover"}</AddButton>
+
+                        <div>
+                            {checkCartRes() ? (
+
+                                <AddButton inCart = {inCart()} onClick = 
+                                
+                                { () => { !inCart() ? ( activeOrder?  alert("Aguarde seu ultimo pedido ser finalizado"):setOpen(true)) :removeCart(id) }}>
+                                    
+                                    {!inCart()? "Adicionar":"Remover"}
+                                
+                                </AddButton>
+                            ): 
+                                <ResNote>Um restaurante por pedido</ResNote>
+                            }
+                        </div>
+
                     </AddProduct>
                 </ProductDetail>
 

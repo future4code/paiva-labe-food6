@@ -1,10 +1,9 @@
 
 import { useContext, useEffect, useState } from 'react';
-import Header from '../../components/Header/Header';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import { Container, CardRest, Filter } from './styled';
+import { Container, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
 import { GlobalStateContext } from '../../globalstate/GlobalStateContext';

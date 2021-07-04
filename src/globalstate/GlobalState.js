@@ -10,6 +10,7 @@ function GlobalState(props) {
     const [restaurants, setRestaurants] = useState([{}])
     const [restaurantDetail, setRestaurantDetail] = useState({})
     const [userProfile, setUserProfile] = useState([])
+    const [activeOrder, setActiveOrder] = useState({})
 
     //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
@@ -79,6 +80,24 @@ function GlobalState(props) {
 
     }
 
+    //RECEBE PEDIDO ATIVO////////////////////////////////////////////////////////////
+    
+    const getActiveOrder = () => {
+        const token = localStorage.getItem("token")
+
+        axios.get(`${BASE_URL}/active-order`, {
+            headers: {
+                auth: token
+            }
+        })
+            .then((res) => {
+                setActiveOrder(res.data.order)
+            })
+            .catch((err) => {
+               console.log(err.response)
+            })
+    }
+
     //REMOVE DO CARRINHO/////////////////////////////////////////////////////////////
     const removeCart = (id) => {
         let novaLista = [...cart]
@@ -92,7 +111,6 @@ function GlobalState(props) {
                     setCart(novaLista)
             }
         }
-        document.location.reload();
     }
 
     useEffect(() => {
@@ -107,7 +125,7 @@ function GlobalState(props) {
 
     return (
 
-        <GlobalStateContext.Provider value={{ userProfile,restaurants, restaurantDetail,cart, getRestaurants, getRestaurantDetails,getProfile,makeCart,removeCart }}>
+        <GlobalStateContext.Provider value={{ activeOrder,userProfile,restaurants, restaurantDetail,cart, getRestaurants,getActiveOrder, getRestaurantDetails,getProfile,makeCart,removeCart }}>
 
             {props.children}
         </GlobalStateContext.Provider>

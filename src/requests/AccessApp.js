@@ -1,14 +1,14 @@
 import { BASE_URL } from '../constants/constants';
 import axios from 'axios';
 
-import { gotoAddress, gotoHome } from '../router/cordination';
+import { gotoAddress, goToHome } from '../router/cordination';
 
 
 export function LoginRequest(body, clear, history) {
     axios.post(`${BASE_URL}/login`, body)
         .then((res) => {
             localStorage.setItem("token", res.data.token)
-            gotoHome(history)
+            goToHome(history)
             clear()
         })
         .catch((err) => {

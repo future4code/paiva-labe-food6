@@ -9,6 +9,7 @@ function GlobalState(props) {
     const [cart, setCart] = useState([])
     const [restaurants, setRestaurants] = useState([{}])
     const [restaurantDetail, setRestaurantDetail] = useState({})
+    const [userProfile, setUserProfile] = useState([])
 
     //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
@@ -45,6 +46,25 @@ function GlobalState(props) {
         })
 
     }
+
+    //RESGATA PROFILE/////////////////////////////////////////////////
+
+    const getProfile = () => {
+        const token = localStorage.getItem("token")
+        axios
+        .get(`${BASE_URL}/profile`, {
+            headers:{
+                auth:token
+            }
+        })
+        .then((res) => {
+            setUserProfile(res.data.user)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+    }
+
     //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
     const makeCart = (product,qntd,resID) => {
 
@@ -77,21 +97,17 @@ function GlobalState(props) {
 
     useEffect(() => {
         if (cart && cart.length > 0) { //Caso Cart tenha conteudo, envia para localStorage
-
             localStorage.setItem("cart", JSON.stringify(cart))
-
-        } else if (cart.length <= 0 && localStorage.getItem("cart")
-            && localStorage.getItem("cart").length) {//Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
-
+        } else if (cart.length <= 0 && localStorage.getItem("cart") && localStorage.getItem("cart").length) {
+            //Caso esteja vazio e exista cart no localStorage, recebe o que está no localstorage
             setCart(JSON.parse(localStorage.getItem("cart")))
         }
-
     }, [cart])
 
 
     return (
 
-        <GlobalStateContext.Provider value={{ restaurants, restaurantDetail,cart, getRestaurants, getRestaurantDetails, makeCart,removeCart }}>
+        <GlobalStateContext.Provider value={{ userProfile,restaurants, restaurantDetail,cart, getRestaurants, getRestaurantDetails,getProfile,makeCart,removeCart }}>
 
             {props.children}
         </GlobalStateContext.Provider>

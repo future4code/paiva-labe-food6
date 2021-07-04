@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
 
 @media(max-width: 600px) {
-
+    margin-bottom: 5rem;
     padding: 8px;
     box-shadow: 0px 0px 5px -2px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
@@ -17,9 +17,9 @@ export const Button = styled.button`
     transition: background-color 0.6s ease;
     overflow: hidden;
     cursor: pointer;
+    width:100%;
     border: none;
     color: #000;
-    width: 100%;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background:  rgba(92, 182, 70, 50);

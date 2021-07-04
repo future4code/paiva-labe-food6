@@ -80,10 +80,10 @@ function CardPage() {
       .then((res) => {
         localStorage.removeItem('cart')
         getLocalStore() //Resgata Local Store
-
+        document.location.reload();
       })
       .catch((err) => {
-        console.log(err.response)
+        alert(err.response.data)
       })  
     }
 

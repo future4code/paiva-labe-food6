@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
 import { Button, PageRegister, FormContainer } from "./styled"
-
 import TextInput from '../../components/TextInput/TextInput';
 import { addAdress } from '../../requests/PutAddAdress';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 function AddressPage() {
+    useProtectedPage()
     const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
 
@@ -18,9 +18,7 @@ function AddressPage() {
     }
 
 
-    return (
-        <div> <Header />
-        
+    return (                      
             <PageRegister>
             <p>Meu endereço</p>
                 <form onSubmit={onSubmit}>
@@ -37,7 +35,7 @@ function AddressPage() {
                     <FormContainer>
                         <TextInput
                             type="number"
-                            name="street"
+                            name="number"
                             value={body.number}
                             label="Número"
                             placeholder="Número"
@@ -46,9 +44,9 @@ function AddressPage() {
                     </FormContainer>
                     <FormContainer>
                         <TextInput
-                            type="string"
-                            name="neighbourhood"
-                            value={body.neighbourhood}
+                            type="complement"
+                            name="complement"
+                            value={body.complement}
                             label="Complemento"
                             placeholder="Apt / Bloco"
                             onChange={onChange}
@@ -93,9 +91,6 @@ function AddressPage() {
                     >Cadastrar</Button>
                 </form>
             </PageRegister>
-
-
-        </div>
 
     )
 }

@@ -71,8 +71,7 @@ function HomePage() {
     }
 
     return (
-        <div>
-            <Header />
+        <div>        
 
             <TextField
                 type="text"

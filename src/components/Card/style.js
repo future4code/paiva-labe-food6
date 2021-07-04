@@ -9,6 +9,10 @@ export const CardRes = styled.div`
     height:15rem;
 `
 
+export const ResNote = styled.p`
+    font-size: small;
+`
+
 export const ResImg = styled.img`
     height: 150px;
     width: 100%;

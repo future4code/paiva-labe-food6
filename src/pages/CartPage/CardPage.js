@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Button/Footer';
 import RestaurantCart from '../../components/Cart/RestaurantCart';
 import {CartArea,PriceArea,TotalValor} from "./styled"
+import { useGetActiveOrder } from '../../requests/getActiveOrder';
 
 
 function CardPage() {
@@ -19,7 +20,7 @@ function CardPage() {
   const history = useHistory()
   const [cart,setCart] = useState([])
   const [payment,setPayment] = useState("")
-  const {userProfile,getProfile} = useContext(GlobalStateContext)
+  const {userProfile,getProfile,activeOrder,getActiveOrder} = useContext(GlobalStateContext)
   const [shipping,setShipping] = useState(0)
   const [total,setTotal] = useState(0)
 
@@ -28,9 +29,24 @@ function CardPage() {
   useLayoutEffect(() => {
     getLocalStore()
     getProfile()
+    getActiveOrder()
   },[])
 
+  console.log(activeOrder)
 
+  let dateCreated = activeOrder && new Date(activeOrder.createdAt)
+  let dateExpire = activeOrder && new Date(activeOrder.expiresAt)
+
+  dateCreated = activeOrder && dateCreated.toLocaleDateString(navigator.language, {
+    hour: '2-digit',
+    minute:'2-digit'
+  })
+
+  dateExpire = activeOrder && dateExpire.toLocaleDateString(navigator.language, {
+    hour: '2-digit',
+    minute:'2-digit'
+  })
+  
   const getLocalStore = () => { // Carrinho recebe dados de produtos pelo Local Store
     if(localStorage.getItem("cart") && localStorage.getItem("cart").length){
       setCart(JSON.parse(localStorage.getItem("cart")))
@@ -108,7 +124,15 @@ function CardPage() {
         </div> 
 
         
-      ): "Carrinho Vazio"}
+      ): activeOrder? (
+        <div>
+        <h2>Pedido Feito</h2>
+        <h3>{activeOrder.restaurantName}</h3>
+        <p>Data de Pedido: {dateCreated}</p>
+        <p>Entrega: {dateExpire}</p>
+        </div>
+      ):
+      "Carrinho Vazio"}
 
       <Footer 
         history = {history}

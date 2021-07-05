@@ -43,7 +43,7 @@ Silvio Dias: Pagina de Restaurante, Card de Restaurante e Produto, Algoritmo e P
 
 Adrian: Filtro de categoria de restaurante, pagina de perfil, editor de perfil, requisições, pagina de carregamento, botão
 
-Fabricia: Pagina de registro, header, pagina de carrinho
+Fabricia: Pagina de registro, header, pagina de carrinho,Navbar
 
 Júlia Iziodório: Pagina Inicial, Login e Router
 

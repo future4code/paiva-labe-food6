@@ -52,7 +52,7 @@ function HomePage() {
         const searchList = []
         const word = event.target.value
         for (let i = 0; i < restaurants.length; i++) {
-            if (restaurants && restaurants[i].name === word) {
+            if (restaurants && restaurants[i].name.toLowerCase() === word.toLowerCase()) {
                 searchList.push(restaurants[i])
                 console.log(searchList)
             }

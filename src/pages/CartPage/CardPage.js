@@ -105,9 +105,13 @@ function CardPage() {
   return (
     <CartArea>
       <TituloPage />
+    
+      <AddressCart profile = {userProfile} />
+
       {userProfile && userProfile.id ? <AddressCart profile={userProfile} /> : <LoadingGif />}
 
-      {cartList ? (
+      {cartList && localStorage.getItem("cart") ? (
+
         <div>
           <RestaurantCart id={cart[0].resID} shippingPrice={getShipping} />
           {cartList}

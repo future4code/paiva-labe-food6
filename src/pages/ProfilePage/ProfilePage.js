@@ -8,6 +8,7 @@ import Footer from '../../components/Button/Footer';
 import { goToChangeAddress, goToUpdateInfo } from '../../router/cordination';
 import './profilepage.scss';
 import { useGetOrderHistory } from '../../requests/useGetOrderHistory';
+import LoadingGif from '../../components/LoadingGif/LoadingGif';
 
 function ProfilePage() {
     useProtectedPage()
@@ -57,7 +58,7 @@ function ProfilePage() {
                     }) : <p style={{ textAlign: "center", padding: "20px 0" }}>Você não realizou nenhum pedido</p>}
 
                 </div>
-            ) : <p>carregando</p>}
+            ) : <LoadingGif />}
 
             <Footer history={history} />
 

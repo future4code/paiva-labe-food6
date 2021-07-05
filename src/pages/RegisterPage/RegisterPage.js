@@ -72,17 +72,6 @@ function RegisterPage() {
         }
     };
 
-    /*const onSubmit = (e) => {
-        e.preventDefault();
-        if (body.password === body.passwordClick) {
-
-            SignUpRequest(body, clear, history);
-        } else {
-            alert("Senhas incompatíveis")
-        }
-
-    }*/
-
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />

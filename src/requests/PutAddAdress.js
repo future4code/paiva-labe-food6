@@ -22,7 +22,7 @@ export const addAdress = (body, clear, history) => {
         })
 }
 
-export const changeAdress = (body, clear) => {
+export const changeAdress = (body, clear, history) => {
     console.log(body)
 
     axios.put(`${BASE_URL}/address`, body, {
@@ -34,6 +34,7 @@ export const changeAdress = (body, clear) => {
             localStorage.setItem("token", res.data.token)
             console.log(res.data)
             alert("endereço alterado com sucesso")
+            history.push("/perfil")
             clear()
         })
         .catch((err) => {

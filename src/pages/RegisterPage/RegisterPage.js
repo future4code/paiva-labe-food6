@@ -103,6 +103,7 @@ function RegisterPage() {
                             />
                         </FormControl>
                     </FormContainer>
+                    
                     <FormContainer>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">E-mail*</InputLabel>

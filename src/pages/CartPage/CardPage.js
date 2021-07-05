@@ -11,10 +11,8 @@ import { BASE_URL } from '../../constants/constants';
 import { useHistory } from 'react-router-dom';
 import Footer from '../../components/Button/Footer';
 import RestaurantCart from '../../components/Cart/RestaurantCart';
-import { CartArea, PriceArea, TotalValor } from "./styled"
-import { useGetActiveOrder } from '../../requests/getActiveOrder';
+import { CartArea, PriceArea, TotalValor } from "./styled";
 import LoadingGif from '../../components/LoadingGif/LoadingGif';
-
 
 function CardPage() {
   useProtectedPage()

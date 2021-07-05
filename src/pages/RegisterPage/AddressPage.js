@@ -11,16 +11,15 @@ function AddressPage() {
     const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
 
-
     const onSubmit = (e) => {
         e.preventDefault();
         addAdress(body, clear, history);
     }
 
-
     return (
         <PageRegister>
             <p>Meu endereço</p>
+            <br />
             <form onSubmit={onSubmit}>
                 <FormContainer>
                     <TextInput
@@ -32,6 +31,7 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
+                <br />
                 <FormContainer>
                     <TextInput
                         type="number"
@@ -42,6 +42,7 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
+                <br />
                 <FormContainer>
                     <TextInput
                         type="complement"
@@ -52,8 +53,8 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
+                <br />
                 <FormContainer>
-
                     <TextInput
                         type="text"
                         name="neighbourhood"
@@ -63,8 +64,8 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
+                <br />
                 <FormContainer>
-
                     <TextInput
                         type="text"
                         name="city"
@@ -74,8 +75,8 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
+                <br />
                 <FormContainer>
-
                     <TextInput
                         type="text"
                         name="state"
@@ -85,7 +86,7 @@ function AddressPage() {
                         onChange={onChange}
                         required />
                 </FormContainer>
-
+                <br />
                 <Button
                     fullWidth
                 >Cadastrar</Button>

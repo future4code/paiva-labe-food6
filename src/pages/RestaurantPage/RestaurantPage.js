@@ -13,7 +13,7 @@ function RestaurantPage() {
     useProtectedPage()
 
     const params = useParams()
-    const { restaurantDetail, getRestaurantDetails, cart } = useContext(GlobalStateContext)
+    const { restaurantDetail, getRestaurantDetails } = useContext(GlobalStateContext)
 
     useEffect(() => {
         getRestaurantDetails(params.id)

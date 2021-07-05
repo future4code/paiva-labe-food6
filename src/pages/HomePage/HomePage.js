@@ -7,20 +7,16 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
 import Footer from '../../components/Button/Footer';
-import useForm from '../../hooks/useForm';
 import { useContext, useEffect, useState } from 'react';
-
+import { TextField } from '@material-ui/core';
 
 function HomePage() {
     const history = useHistory()
-    
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
-    const { body } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
+    const [searchFilter, setSearchFilter] = useState([])
     const [isFiltred, setFiltred] = useState(false)
     useProtectedPage()
-
-    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
 
     useEffect(() => {
         getRestaurants()
@@ -32,7 +28,6 @@ function HomePage() {
     }
 
     const chooseFilter = (category) => {
-
         restaurants.filter(choosed => {
             if (choosed.category === category) {
                 setItensInFilter([choosed])
@@ -42,9 +37,8 @@ function HomePage() {
         })
     }
 
-    
     const getSearched = (event) => {
-        
+
         const searchList = []
         const word = event.target.value
         for (let i = 0; i < restaurants.length; i++) {
@@ -52,9 +46,7 @@ function HomePage() {
                 searchList.push(restaurants[i])
             }
         }
-
         setSearchFilter(searchList)
-
     }
 
     const searchList = searchFilter.length && searchFilter.map((rest) => {
@@ -93,26 +85,24 @@ function HomePage() {
         )
     })
 
-
-
     if (!restaurants[0].logoUrl) {
         return (
             <HomeInitial />
         )
     }
-    
+
     return (
-        <div>                         
+        <div>
 
             <TextField
-                placeholder = "&#128269; Pesquisar Restaurante"
+                placeholder="&#128269; Pesquisar Restaurante"
                 type="text"
                 fullWidth
                 variant="outlined"
                 name="search"
                 onChange={getSearched}
             />
-           
+
 
             <Filter>
                 <p onClick={() => setFiltred(false)}>Tudo</p>
@@ -122,8 +112,8 @@ function HomePage() {
             </Filter>
 
             <Container>
-                {searchFilter.length > 0 ? searchList:
-                isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>
+                {searchFilter.length > 0 ? searchList :
+                    isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>
                 }
             </Container>
 

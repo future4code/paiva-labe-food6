@@ -39,7 +39,7 @@ Não funciona:
 
 Participantes:
 
-Silvio Dias: Pagina de Restaurante, Card de Restaurante e Produto, Algoritmo e Pagina de Carrinho, filtro de pesquisa, pedido em andamento, modal, layout de modal, navbar, Global Context
+Silvio Dias: Pagina de Restaurante, Card de Restaurante e Produto, Algoritmo e Pagina de Carrinho, filtro de pesquisa, pedido em andamento, modal, layout de modal, navbar, Global Context, mascara de CPF
 
 Adrian: Filtro de categoria de restaurante, pagina de perfil, editor de perfil, requisições, pagina de carregamento, botão
 

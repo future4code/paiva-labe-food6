@@ -6,7 +6,7 @@ export const useUpdateProfile = () => {
     const token = localStorage.getItem("token")
     const [userData, setUserData] = useState({})
 
-    const setProfile = (body) => {
+    const setProfile = (body, history) => {
         console.log(body)
         axios.put(`${BASE_URL}/profile`, body, {
             headers: {
@@ -15,7 +15,9 @@ export const useUpdateProfile = () => {
         })
             .then((res) => {
                 console.log(res.data.user)
+                alert("Dados alterados com sucesso !")
                 setUserData(res.data.user)
+                history.push("/perfil")
             })
             .catch((err) => {
                 console.log(err.response.data)

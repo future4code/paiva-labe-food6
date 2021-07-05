@@ -13,7 +13,7 @@ export const FormContainer = styled.div`
    display:flex;
     flex-direction: column;    
     margin:auto;  
-    width:100vw;
+    width:100%;
   
   
 form{

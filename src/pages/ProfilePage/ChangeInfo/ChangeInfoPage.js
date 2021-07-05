@@ -38,51 +38,52 @@ function ChangeInfoPage() {
 
             <main>
                 <form onSubmit={onSubmitRegister}>
+                    <div className="divAlign">
+                        <FormContainer>
+                            <FormControl className={clsx(classes.margin)} variant="outlined">
+                                <InputLabel htmlFor="outlined-adornment-email">Nome</InputLabel>
+                                <OutlinedInput
+                                    type="text"
+                                    name="name"
+                                    value={body.name}
+                                    placeholder="Nome completo"
+                                    onChange={onChange}
+                                    required
+                                    labelWidth={100}
+                                />
+                            </FormControl>
+                        </FormContainer>
 
-                    <FormContainer>
-                        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-email">Nome</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                name="name"
-                                value={body.name}
-                                placeholder="Nome completo"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
+                        <FormContainer>
+                            <FormControl className={clsx(classes.margin)} variant="outlined">
+                                <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+                                <OutlinedInput
+                                    type="email"
+                                    name="email"
+                                    value={body.Email}
+                                    placeholder="usuario@dominio.com"
+                                    onChange={onChange}
+                                    required
+                                    labelWidth={100}
+                                />
+                            </FormControl>
+                        </FormContainer>
 
-                    <FormContainer>
-                        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
-                            <OutlinedInput
-                                type="email"
-                                name="email"
-                                value={body.Email}
-                                placeholder="usuario@dominio.com"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
-
-                    <FormContainer>
-                        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-email">CPF</InputLabel>
-                            <OutlinedInput
-                                type="text"
-                                name="cpf"
-                                value={body.cpf}
-                                placeholder="123.456.789-01"
-                                onChange={onChange}
-                                required
-                                labelWidth={100}
-                            />
-                        </FormControl>
-                    </FormContainer>
+                        <FormContainer>
+                            <FormControl className={clsx(classes.margin)} variant="outlined">
+                                <InputLabel htmlFor="outlined-adornment-email">CPF</InputLabel>
+                                <OutlinedInput
+                                    type="text"
+                                    name="cpf"
+                                    value={body.cpf}
+                                    placeholder="123.456.789-01"
+                                    onChange={onChange}
+                                    required
+                                    labelWidth={100}
+                                />
+                            </FormControl>
+                        </FormContainer>
+                    </div>
 
                     <Button type="submit">Salvar</Button>
                 </form>

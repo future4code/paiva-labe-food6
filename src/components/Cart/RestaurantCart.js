@@ -8,8 +8,6 @@ function RestaurantCart(props) {
         getRestaurantDetails(props.id)
     }, [])
 
-    console.log(restaurantDetail.restaurant && restaurantDetail.restaurant.name)
-
     if(restaurantDetail.restaurant){
         props.shippingPrice(restaurantDetail.restaurant.shipping)
     }

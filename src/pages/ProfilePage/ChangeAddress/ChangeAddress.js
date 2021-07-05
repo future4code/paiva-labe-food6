@@ -20,7 +20,7 @@ function ChangeAddress() {
         event.preventDefault()
         changeAdress(body, clear);
     }
-    console.log(body)
+    
     return (
         <div>
             <header>

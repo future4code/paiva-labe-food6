@@ -14,11 +14,10 @@ export default function useFullAddressRequest() {
             }
         })
             .then((res) => {
-                console.log(res.data.address)
                 setAddress(res.data.address)
             })
             .catch((err) => {
-                alert(err)
+                alert(err.response.data.message)
             })
     }
     return [address, getFullAddress]

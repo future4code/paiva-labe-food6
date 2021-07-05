@@ -21,8 +21,6 @@ function ProfilePage() {
         getOrder()
     }, [])
 
-    console.log(orderHistory)
-
     const history = useHistory()
 
     return (
@@ -54,7 +52,6 @@ function ProfilePage() {
                     <div style={{ width: "100%", borderBottom: "1px solid black" }} />
 
                     {orderHistory && orderHistory[0] && orderHistory[0].restaurantName ? orderHistory.map((order) => {
-                        console.log(order)
                         return <OrderCard order={order} key={order.expiredAt}/>
                     }) : <p style={{ textAlign: "center", padding: "20px 0" }}>Você não realizou nenhum pedido</p>}
 

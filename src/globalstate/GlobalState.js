@@ -27,7 +27,7 @@ function GlobalState(props) {
 
             })
             .catch((err) => {
-                alert(err.response.data.message)
+                alert(err.response.data)
             })
     }
     //RESGATA DETALHES DO RESTAURANTE/////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ function GlobalState(props) {
             setUserProfile(res.data.user)
         })
         .catch((err) => {
-            console.log(err.response)
+            alert(err.response.data)
         })
     }
 
@@ -94,7 +94,7 @@ function GlobalState(props) {
                 setActiveOrder(res.data.order)
             })
             .catch((err) => {
-               console.log(err.response)
+                alert(err.response.data)
             })
     }
 

@@ -15,6 +15,7 @@ import { CartArea, PriceArea, TotalValor } from "./styled";
 import LoadingGif from '../../components/LoadingGif/LoadingGif';
 
 function CardPage() {
+  document.title = "Labe Eats | Carrinho"
   useProtectedPage()
   const history = useHistory()
   const [cart, setCart] = useState([])

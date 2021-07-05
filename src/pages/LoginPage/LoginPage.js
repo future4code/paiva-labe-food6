@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TextInput from '../../components/TextInput/TextInput';
 import useForm from '../../hooks/useForm';
@@ -7,23 +7,22 @@ import { gotoRegister } from '../../router/cordination'
 import { Main, FormContainer, Button } from "../LoginPage/styled"
 import logo from '../../Assets/logo.png'
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+import { CircularProgress } from '@material-ui/core';
+
 
 function LoginPage() {
+    document.title = "Labe Eats | Login"
     const history = useHistory()
     useUnprotectedPage()
     const { body, onChange, clear } = useForm({ email: "", password: "" })
-    //const history = useHistory()
-    //Desenvolver um formulário e a funcao 'clear' do useForm limpa todos os campos
-    //IMPORTANTE: ao criar o de senha, inserir mais um campo no useform e ficaria {login: "", senha: ""} por exemplo e esse padrao será usado em todos os campos de input
-
+    const [loading, setLoading] = useState(false)
     const onSubmit = (e) => {
         e.preventDefault();
+        setLoading(!loading)
         LoginRequest(body, clear, history);
     }
     return (
         <Main>
-
-            {/* <TextInput type="tipo do input" name="nome do input, será usado com o customhook do useForm" value="valor dele de acordo com o hook" label="mensagem na parte superior" placeholder="mensagem do campo de busca" onChange="evento de mudança que vai pra o estado do custom hook" /> */}
             <FormContainer >
                 <form onSubmit={onSubmit}>
 
@@ -44,11 +43,9 @@ function LoginPage() {
                         label="password"
                         onChange={onChange}
                         required />
-
-                    <Button
-                        fullWidth
-                    >Entrar</Button>
-                    <h4 onClick={() => gotoRegister(history)}>Ainda não tem Cadastro? Clique aqui</h4>
+                    <br />
+                    <Button fullWidth>{loading ? <CircularProgress /> : "Logar"}</Button>
+                    <h4 onClick={() => gotoRegister(history)} style={{ padding: "10px 0" }}>Ainda não tem Cadastro? <u>Clique aqui</u></h4>
                 </form>
             </FormContainer>
 

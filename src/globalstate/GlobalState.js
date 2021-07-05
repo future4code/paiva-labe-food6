@@ -11,6 +11,7 @@ function GlobalState(props) {
     const [restaurantDetail, setRestaurantDetail] = useState({})
     const [userProfile, setUserProfile] = useState([])
     const [activeOrder, setActiveOrder] = useState({})
+    const [temporaryToken, setTemporaryToken] = useState("")
 
     //RESGATA LISTA DE RESTAURANTES//////////////////////////////////////////////////////////
     const getRestaurants = () => {
@@ -39,12 +40,12 @@ function GlobalState(props) {
             }
         })
 
-        .then((res) => {
-            setRestaurantDetail(res.data)
-        })
-        .catch((err) => {
-            alert(err.response.data)
-        })
+            .then((res) => {
+                setRestaurantDetail(res.data)
+            })
+            .catch((err) => {
+                alert(err.response.data)
+            })
 
     }
 
@@ -53,21 +54,21 @@ function GlobalState(props) {
     const getProfile = () => {
         const token = localStorage.getItem("token")
         axios
-        .get(`${BASE_URL}/profile`, {
-            headers:{
-                auth:token
-            }
-        })
-        .then((res) => {
-            setUserProfile(res.data.user)
-        })
-        .catch((err) => {
-            alert(err.response.data)
-        })
+            .get(`${BASE_URL}/profile`, {
+                headers: {
+                    auth: token
+                }
+            })
+            .then((res) => {
+                setUserProfile(res.data.user)
+            })
+            .catch((err) => {
+                alert(err.response.data)
+            })
     }
 
     //ADICIONA OBJETOS AO CARRINHO //////////////////////////////////////////////////////////
-    const makeCart = (product,qntd,resID) => {
+    const makeCart = (product, qntd, resID) => {
 
         const cartProduct = {}
 
@@ -81,7 +82,7 @@ function GlobalState(props) {
     }
 
     //RECEBE PEDIDO ATIVO////////////////////////////////////////////////////////////
-    
+
     const getActiveOrder = () => {
         const token = localStorage.getItem("token")
 
@@ -101,14 +102,14 @@ function GlobalState(props) {
     //REMOVE DO CARRINHO/////////////////////////////////////////////////////////////
     const removeCart = (id) => {
         let novaLista = [...cart]
-        for(let i = 0;i < novaLista.length; i++){   
-            if(novaLista[i].product.id === id){
-                if(novaLista.length === 1){
+        for (let i = 0; i < novaLista.length; i++) {
+            if (novaLista[i].product.id === id) {
+                if (novaLista.length === 1) {
                     setCart([])
                     localStorage.removeItem('cart')
                 }
-                    novaLista.splice(i,1)
-                    setCart(novaLista)
+                novaLista.splice(i, 1)
+                setCart(novaLista)
             }
         }
     }
@@ -125,9 +126,10 @@ function GlobalState(props) {
 
     return (
 
-        <GlobalStateContext.Provider value={{ activeOrder,userProfile,restaurants, restaurantDetail,cart, getRestaurants,getActiveOrder, getRestaurantDetails,getProfile,makeCart,removeCart }}>
+        <GlobalStateContext.Provider value={{ activeOrder, userProfile, restaurants, restaurantDetail, cart, getRestaurants, getActiveOrder, getRestaurantDetails, getProfile, makeCart, removeCart, temporaryToken, setTemporaryToken }}>
 
             {props.children}
+
         </GlobalStateContext.Provider>
     )
 }

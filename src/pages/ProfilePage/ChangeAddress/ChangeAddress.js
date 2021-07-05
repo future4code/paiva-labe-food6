@@ -1,11 +1,9 @@
 
 
 import React from 'react'
-import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
 import useProtectedPage from '../../../hooks/useProtectedPage';
 import useForm from '../../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
-import { gotoBack } from '../../../router/cordination';
 import { Button } from '../../../components/Button/Button';
 import { changeAdress } from '../../../requests/PutAddAdress';
 import './address.scss';
@@ -13,10 +11,11 @@ import { FormContainer } from '../../LoginPage/styled';
 import { FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
 import clsx from "clsx";
 import { useStyles } from '../../../components/FileInput/FileInput';
+import HeaderRestaurant from '../../../components/Header/HeaderRestaurant';
 
 function ChangeAddress() {
+    document.title = "Labe Eats | Atualizar Endereço"
     const classes = useStyles();
-
     useProtectedPage()
     const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", neighbourhood: "", number: "", complement: "", city: "", state: "" })
@@ -28,13 +27,7 @@ function ChangeAddress() {
     return (
 
         <div id="infoContainer">
-            <header>
-                <div>
-                    <ArrowBackIosSharpIcon onClick={() => gotoBack(history)} />
-                    <h2>Endereço</h2>
-                </div>
-
-            </header>
+            <HeaderRestaurant />
 
             <main>
                 <form onSubmit={onSubmitChangeAddress}>

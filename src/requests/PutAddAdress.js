@@ -3,11 +3,11 @@ import { BASE_URL } from "../constants/constants"
 import { goToHome } from "../router/cordination"
 
 
-export const addAdress = (body, clear, history) => {
+export const addAdress = (body, clear, history, temporaryToken) => {
 
     axios.put(`${BASE_URL}/address`, body, {
         headers: {
-            auth: localStorage.getItem("token")
+            auth: temporaryToken
         }
     })
         .then((res) => {

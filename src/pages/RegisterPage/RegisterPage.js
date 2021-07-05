@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, PageRegister, FormContainer } from "../RegisterPage/styled"
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
@@ -12,17 +12,23 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { useStyles } from "../../components/FileInput/FileInput";
 import { SignUpRequest } from '../../requests/AccessApp';
-
+import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 import clsx from "clsx";
+import { CircularProgress } from '@material-ui/core';
+
 function RegisterPage() {
+    document.title = "Labe Eats | Registro"
     const classes = useStyles();
     const [isValidPassword, setIsValidPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const { temporaryToken, setTemporaryToken } = useContext(GlobalStateContext)
+    console.log(temporaryToken)
+    const [loading, setLoading] = useState(false)
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
         showConfirm: false,
-
     });
 
     const history = useHistory()
@@ -65,17 +71,15 @@ function RegisterPage() {
 
     const onClickSave = async (event) => {
         event.preventDefault();
-        
         if (body.password === confirmPassword) {
-            setIsValidPassword(false);   
-            SignUpRequest(body, history)        
-       
-            } else {
+            setIsValidPassword(false);
+            setLoading(!loading)
+            SignUpRequest(body, history, setTemporaryToken)
+        } else {
             alert("Senhas incompatíveis");
         }
     };
 
- 
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />
@@ -96,7 +100,7 @@ function RegisterPage() {
                             />
                         </FormControl>
                     </FormContainer>
-                    
+
                     <FormContainer>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">E-mail*</InputLabel>
@@ -147,7 +151,7 @@ function RegisterPage() {
                                     <InputAdornment position="end">
                                         <IconButton
                                             aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword }
+                                            onClick={handleClickShowPassword}
                                             onMouseDown={handleMouseDownPassword}
                                             edge="end"
                                         >
@@ -172,7 +176,7 @@ function RegisterPage() {
                                 placeholder="Inserir a senha anterior"
                                 onChange={
                                     (handleChange("confirmPassword"), onChangeConfirmPassword)
-                                  }
+                                }
                                 required
                                 endAdornment={
                                     <InputAdornment position="end">
@@ -187,20 +191,19 @@ function RegisterPage() {
                                     </InputAdornment>
                                 }
                                 labelWidth={100}
-
                             />
                         </FormControl>
                         <FormControl
-            className={clsx(classes.margin, classes.textField)}
-            variant="outlined"
-            error={isValidPassword}
-            fullWidth
-          >
+                            className={clsx(classes.margin, classes.textField)}
+                            variant="outlined"
+                            error={isValidPassword}
+                            fullWidth
+                        >
                         </FormControl>
                     </FormContainer>
 
                 </FormContainer>
-                <Button type="submit" fullWidth>Criar</Button>
+                <Button type="submit" fullWidth>{loading ? <CircularProgress /> : "Criar"}</Button>
             </form>
 
         </PageRegister >

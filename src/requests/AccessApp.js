@@ -16,10 +16,10 @@ export function LoginRequest(body, clear, history) {
         })
 }
 
-export function SignUpRequest(body, history) {
+export function SignUpRequest(body, history, setTemporaryToken) {
     axios.post(`${BASE_URL}/signup`, body)
         .then((res) => {
-            localStorage.setItem("token", res.data.token)
+            setTemporaryToken(res.data.token)
             alert("Conta criada com sucesso!");
             gotoAddress(history)
         })

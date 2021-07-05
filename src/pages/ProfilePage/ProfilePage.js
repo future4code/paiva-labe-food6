@@ -13,6 +13,7 @@ import LoadingGif from '../../components/LoadingGif/LoadingGif';
 
 
 function ProfilePage() {
+    document.title = "Labe Eats | Perfil"
     useProtectedPage()
     const { userProfile, getProfile } = useGetProfile()
     const { orderHistory, getOrder } = useGetOrderHistory()

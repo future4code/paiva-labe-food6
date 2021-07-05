@@ -16,7 +16,7 @@ const CardRestaurant = ({restaurants}) => {
 
                 <DeliverySpace>
                     <CardText>{deliveryTime} min</CardText>
-                    <CardText>R${shipping}</CardText>
+                    <CardText>{shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</CardText>
                 </DeliverySpace>
             </DetailsArea>
 

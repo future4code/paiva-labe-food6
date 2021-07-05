@@ -4,8 +4,8 @@ import { goToHome, gotoLogin } from '../../router/cordination';
 import { PageHomeInitial } from '../HomePage/styled';
 
 function LoadingPage() {
+    document.title = "Labe Eats"
     const history = useHistory();
-
     useEffect(() => {
         const token = localStorage.getItem("token")
         setTimeout(() => {

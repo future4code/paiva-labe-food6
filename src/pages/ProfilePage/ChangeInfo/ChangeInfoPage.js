@@ -14,6 +14,7 @@ import clsx from "clsx";
 import { useStyles } from '../../../components/FileInput/FileInput';
 
 function ChangeInfoPage() {
+    document.title = "Labe Eats | Atualizar Perfil"
     useProtectedPage()
     const classes = useStyles();
     const history = useHistory()

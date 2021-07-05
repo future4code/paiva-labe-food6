@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from 'react';
 import { TextField } from '@material-ui/core';
 
 function HomePage() {
+    document.title = "Labe Eats | Página Inicial";
     const history = useHistory()
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
     const [itensInFilter, setItensInFilter] = useState([])
@@ -93,7 +94,6 @@ function HomePage() {
 
     return (
         <div>
-
             <TextField
                 placeholder="&#128269; Pesquisar Restaurante"
                 type="text"
@@ -103,11 +103,10 @@ function HomePage() {
                 onChange={getSearched}
             />
 
-
             <Filter>
                 <p onClick={() => setFiltred(false)}>Tudo</p>
                 {restaurants && restaurants.map((result) => {
-                    return <p id={result.id} onClick={() => chooseFilter(result.category)}>{result.category}</p>
+                    return <p id={result.id} onClick={() => chooseFilter(result.category)} key={Math.random()}>{result.category}</p>
                 })}
             </Filter>
 

@@ -9,6 +9,7 @@ import HeaderRestaurant from "../../components/Header/HeaderRestaurant"
 import LoadingGif from '../../components/LoadingGif/LoadingGif';
 
 function RestaurantPage() {
+    document.title = "Labe Eats | Restaurantes"
 
     useProtectedPage()
 
@@ -25,6 +26,7 @@ function RestaurantPage() {
             <CardProduto
                 product={product}
                 restaurantId={params.id}
+                key={Math.random()}
             />
         )
     })

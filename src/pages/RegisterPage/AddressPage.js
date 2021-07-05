@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, PageRegister, FormContainer } from "./styled"
 import TextInput from '../../components/TextInput/TextInput';
 import { addAdress } from '../../requests/PutAddAdress';
 import useForm from '../../hooks/useForm';
 import { useHistory } from 'react-router-dom';
-import useProtectedPage from '../../hooks/useProtectedPage';
+import { CircularProgress } from '@material-ui/core';
+import { GlobalStateContext } from '../../globalstate/GlobalStateContext';
 
 function AddressPage() {
-    useProtectedPage()
+    document.title = "Labe Eats | Endereço"
+    const [loading, setLoading] = useState(false)
     const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
-
+    const { temporaryToken } = useContext(GlobalStateContext)
+    console.log(temporaryToken)
     const onSubmit = (e) => {
         e.preventDefault();
-        addAdress(body, clear, history);
+        setLoading(!loading)
+        addAdress(body, clear, history, temporaryToken);
     }
 
     return (
@@ -87,9 +91,7 @@ function AddressPage() {
                         required />
                 </FormContainer>
                 <br />
-                <Button
-                    fullWidth
-                >Cadastrar</Button>
+                <Button fullWidth>{loading ? <CircularProgress /> : "Criar"}</Button>
             </form>
         </PageRegister>
 

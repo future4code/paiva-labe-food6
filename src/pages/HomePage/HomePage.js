@@ -46,6 +46,34 @@ function HomePage() {
         })
     }
 
+    
+    const getSearched = (event) => {
+        
+        const searchList = []
+        const word = event.target.value
+        for (let i = 0; i < restaurants.length; i++) {
+            if (restaurants && restaurants[i].name === word) {
+                searchList.push(restaurants[i])
+                console.log(searchList)
+            }
+        }
+
+        setSearchFilter(searchList)
+
+    }
+
+    const searchList = searchFilter.length && searchFilter.map((rest) => {
+        console.log(rest)
+        return (
+            <div onClick={() => verDetalhe(rest.id)} key={rest.id}>
+                <CardRestaurant
+                    restaurants={rest}
+                />
+
+            </div>
+        )
+    })
+
     const restaurantFilter = itensInFilter.length && itensInFilter.map((item) => {
         return (
             <div onClick={() => verDetalhe(item.id)} key={item.id}>
@@ -70,53 +98,13 @@ function HomePage() {
         )
     })
 
-
     if(!restaurants[0].logoUrl){
         return(
-
-
-
-
-
-    const filteredMap = restaurants && restaurants.filter((filteredItem) => {
-        console.log(filteredItem)
-        for (let i = 0; i < filteredItem.length; i++) {
-            if (filteredItem.name === body.search) {
-                console.log(filteredItem)
-            }
-        }
-
-
-
-
-
-
-
-
-
-        // let desespero = []
-        // // console.log(desespero.toLowerCase())
-
-        // if (filteredItem.name === body.search) {
-        //     desespero = [filteredItem]
-        //     // setSearchFilter(filteredItem)
-        // }
-        // console.log(desespero)
-
-    })
-
-
-
-
-
-
-    if (!restaurants[0].logoUrl) {
-        return (
 
             <HomeInitial />
         )
     }
-
+    
     return (
 
         <div>                           
@@ -126,8 +114,7 @@ function HomePage() {
                 fullWidth
                 variant="outlined"
                 name="search"
-                onChange={onChange}
-                value={body.search}
+                onChange={getSearched}
             />
 
 
@@ -138,9 +125,10 @@ function HomePage() {
                 })}
             </Filter>
 
-
             <Container>
-                {isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>}
+                {searchFilter.length > 0 ? searchList:
+                isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>
+                }
             </Container>
 
             <Footer

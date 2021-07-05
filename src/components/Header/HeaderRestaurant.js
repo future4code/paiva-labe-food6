@@ -13,16 +13,26 @@ const HeaderRestaurant = () => {
     const Name = () => {
         if (history.location.pathname === "/restaurant") {
             return ("IFuture")
-        } else if (history.location.pathname === `/restaurante/id`) {
+        } 
+        else if (history.location.pathname === "/") {
             return ("Restaurante")
-        } else if (history.location.pathname === "/perfil") {
+        } 
+        else if (history.location.pathname === "/perfil") {
             return ("Meu Perfil")
-        } else if (history.location.pathname === "/registrar" || "/registrar/endereco") {
-            return ("Restaurante")
         }
-        else if (history.location.pathname === "/carrinho") {
-            return ("Meu Carrinho")
-        } else {
+        else if (history.location.pathname === "/perfil/atualizar-info") {
+            return ("Editar")
+        }
+        else if (history.location.pathname === "/perfil/atualizar-endereco") {
+            return ("Endereço")
+        }
+        else if (history.location.pathname === "/registrar" || "/registrar/endereco") {
+            return ("Restaurante")       
+         }
+        
+        else if(history.location.pathname === "/search"){
+            return("Busca")
+        }   else {
             return ("")
         }
     }

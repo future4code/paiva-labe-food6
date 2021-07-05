@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Head = styled.div`
 @media(max-width: 600px) {
+  
   width: 10.938rem;
   height: 2.75rem;
   margin: 1.25rem 5.75rem 0 3.373rem;
@@ -16,6 +17,7 @@ export const Head = styled.div`
   display: flex;
   top:0;
   .Back {
+    
     grid-column: 1/2;
     width: 1.44rem;
     height: 1.5rem;
@@ -26,9 +28,8 @@ export const Head = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     grid-column:2/3;
     margin: auto 1rem;
-    width: 5.688rem;
+    width: 10rem;
     height: 1.188rem;
-    font-family: Roboto;
     font-size: 1rem;
     font-weight: normal;
     font-stretch: normal;
@@ -38,6 +39,7 @@ export const Head = styled.div`
     text-align: center;
   }
   .zero{
+    
     grid-column:1/2;
     width:25vw;
   }

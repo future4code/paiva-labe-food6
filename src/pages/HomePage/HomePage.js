@@ -1,10 +1,4 @@
-
-import { useContext, useEffect, useState } from 'react';
 import React from 'react';
-
-import TextField from '@material-ui/core/TextField';
-import SearchIcon from '@material-ui/icons/Search';
-
 import { Container, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
@@ -14,21 +8,26 @@ import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
 import Footer from '../../components/Button/Footer';
 import useForm from '../../hooks/useForm';
+import { useContext, useEffect, useState } from 'react';
+
+
 
 function HomePage() {
-    useProtectedPage()
     const history = useHistory()
+
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
-    const { body, onChange } = useForm({ search: "" })
+    const { body } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
-    const [searchFilter, setSearchFilter] = useState([])
+
     const [isFiltred, setFiltred] = useState(false)
+    useProtectedPage()
+
 
     useEffect(() => {
         getRestaurants()
     }, [])
 
-    // console.log(restaurants)
+
     console.log(body)
 
     const verDetalhe = (id) => {
@@ -66,47 +65,10 @@ function HomePage() {
                     restaurants={rest}
                 />
 
+
             </div>
         )
     })
-
-
-    if(!restaurants[0].logoUrl){
-        return(
-
-
-
-
-
-    const filteredMap = restaurants && restaurants.filter((filteredItem) => {
-        console.log(filteredItem)
-        for (let i = 0; i < filteredItem.length; i++) {
-            if (filteredItem.name === body.search) {
-                console.log(filteredItem)
-            }
-        }
-
-
-
-
-
-
-
-
-
-        // let desespero = []
-        // // console.log(desespero.toLowerCase())
-
-        // if (filteredItem.name === body.search) {
-        //     desespero = [filteredItem]
-        //     // setSearchFilter(filteredItem)
-        // }
-        // console.log(desespero)
-
-    })
-
-
-
 
 
 
@@ -119,17 +81,9 @@ function HomePage() {
 
     return (
 
-        <div>                           
+        <div>
 
-            <TextField
-                type="text"
-                fullWidth
-                variant="outlined"
-                name="search"
-                onChange={onChange}
-                value={body.search}
-            />
-
+           
 
             <Filter>
                 <p onClick={() => setFiltred(false)}>Tudo</p>

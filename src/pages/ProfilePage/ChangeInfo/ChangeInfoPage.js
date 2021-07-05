@@ -1,18 +1,16 @@
 import React from 'react';
-import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
 import TextInput from '../../../components/TextInput/TextInput';
 import useForm from '../../../hooks/useForm';
 import useProtectedPage from '../../../hooks/useProtectedPage';
-import { useHistory } from 'react-router';
-import { gotoBack } from '../../../router/cordination';
 import { useUpdateProfile } from '../../../requests/UpdateProfile';
 import { Button } from '../../../components/Button/Button';
 import './info.scss';
+import HeaderRestaurant from "../../../components/Header/HeaderRestaurant"
+import {FormContainer} from "../../RegisterPage/styled"
 
 
 function ChangeInfoPage() {
     useProtectedPage()
-    const history = useHistory()
     const { body, onChange, clear } = useForm({ name: "", email: "", cpf: "" })
     const { setProfile } = useUpdateProfile()
 
@@ -25,36 +23,39 @@ function ChangeInfoPage() {
     }
     return (
         <div>
-            <header>
-                <ArrowBackIosSharpIcon onClick={() => gotoBack(history)} />
-                <h2>Editar</h2>
-            </header>
+            <HeaderRestaurant />
 
             <main>
-                <form onSubmit={onSubmitRegister}>
-                    <TextInput
-                        type="text"
-                        name="name"
-                        value={body.name}
-                        label="Nome"
-                        onChange={onChange}
-                    />
+                
+                    <form onSubmit={onSubmitRegister}>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="name"
+                            value={body.name}
+                            label="Nome"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="email"
+                            name="email"
+                            value={body.email}
+                            label="Email"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="cpf"
+                            value={body.cpf}
+                            label="CPF"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
 
-                    <TextInput
-                        type="email"
-                        name="email"
-                        value={body.email}
-                        label="Email"
-                        onChange={onChange}
-                    />
-
-                    <TextInput
-                        type="text"
-                        name="cpf"
-                        value={body.cpf}
-                        label="CPF"
-                        onChange={onChange}
-                    />
 
                     <Button type="submit">Salvar</Button>
                 </form>

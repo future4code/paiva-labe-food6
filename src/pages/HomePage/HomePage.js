@@ -11,23 +11,28 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
 import Footer from '../../components/Button/Footer';
+import useForm from '../../hooks/useForm';
 
 function HomePage() {
     useProtectedPage()
     const history = useHistory()
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
+    const { body, onChange } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
+    const [searchFilter, setSearchFilter] = useState([])
     const [isFiltred, setFiltred] = useState(false)
 
     useEffect(() => {
         getRestaurants()
     }, [])
 
-    console.log(restaurants)
+    // console.log(restaurants)
+    console.log(body)
 
     const verDetalhe = (id) => {
         gotoRest(history, id)
     }
+
     const chooseFilter = (category) => {
 
         restaurants.filter(choosed => {
@@ -39,12 +44,12 @@ function HomePage() {
         })
     }
 
-    const restaurantFIlter = itensInFilter.length && itensInFilter.map((item) => {
+    const restaurantFilter = itensInFilter.length && itensInFilter.map((item) => {
         return (
-            <div onClick={()=> verDetalhe(item.id)} key={item.id}>
-            <CardRestaurant
-                restaurants = {item}
-            />
+            <div onClick={() => verDetalhe(item.id)} key={item.id}>
+                <CardRestaurant
+                    restaurants={item}
+                />
 
             </div>
         )
@@ -53,30 +58,70 @@ function HomePage() {
 
     const showRestaurants = restaurants && restaurants.map((rest) => {
 
-        return(
-            <div onClick={()=> verDetalhe(rest.id)} key={rest.id}>
-            <CardRestaurant
-                restaurants = {rest}
-            />
+        return (
+            <div onClick={() => verDetalhe(rest.id)} key={rest.id}>
+                <CardRestaurant
+                    restaurants={rest}
+                />
 
             </div>
         )
     })
 
-    if(!restaurants[0].logoUrl){
-        return(
-            <HomeInitial/>
+
+
+
+
+    const filteredMap = restaurants && restaurants.filter((filteredItem) => {
+        console.log(filteredItem)
+        for (let i = 0; i < filteredItem.length; i++) {
+            if (filteredItem.name === body.search) {
+                console.log(filteredItem)
+            }
+        }
+
+
+
+
+
+
+
+
+
+        // let desespero = []
+        // // console.log(desespero.toLowerCase())
+
+        // if (filteredItem.name === body.search) {
+        //     desespero = [filteredItem]
+        //     // setSearchFilter(filteredItem)
+        // }
+        // console.log(desespero)
+
+    })
+
+
+
+
+
+
+    if (!restaurants[0].logoUrl) {
+        return (
+            <HomeInitial />
         )
     }
 
     return (
-        <div>        
+        <div>
 
             <TextField
                 type="text"
                 fullWidth
                 variant="outlined"
+                name="search"
+                onChange={onChange}
+                value={body.search}
             />
+
             <Filter>
                 <p onClick={() => setFiltred(false)}>Tudo</p>
                 {restaurants && restaurants.map((result) => {
@@ -86,13 +131,13 @@ function HomePage() {
 
 
             <Container>
-                {isFiltred ? <div style={{width: "95%", margin: "0 auto"}}>{restaurantFIlter}</div> : <div style={{width: "95%", margin: "0 auto"}}>{showRestaurants}</div>}
+                {isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>}
             </Container>
 
-            <Footer 
-                history = {history}
+            <Footer
+                history={history}
             />
-        </div >
+        </div>
 
     )
 }

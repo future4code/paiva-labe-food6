@@ -17,7 +17,7 @@ export const useGetOrderHistory = () => {
                 setOrderHistory([res.data.order])
             })
             .catch((err) => {
-                console.log(err.response.data)
+                console.log(err.response)
             })
     }
     return { orderHistory, getOrder }

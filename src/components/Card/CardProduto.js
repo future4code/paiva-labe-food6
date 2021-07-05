@@ -45,7 +45,6 @@ const CardProduto = ({product,qntd,restaurantId}) => {
     function inCart(){
         const valor = cart.length
         for (let i = 0;i < valor; i++){
-            console.log([i])
             if(cart[i].product.id === id){
                 return(true)
             }else if (cart[i] && cart[i].product.id === restaurantId){

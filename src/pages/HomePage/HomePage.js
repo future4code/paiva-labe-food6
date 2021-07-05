@@ -28,9 +28,6 @@ function HomePage() {
         getRestaurants()
     }, [])
 
-    // console.log(restaurants)
-    console.log(body)
-
     const verDetalhe = (id) => {
         gotoRest(history, id)
     }
@@ -54,7 +51,6 @@ function HomePage() {
         for (let i = 0; i < restaurants.length; i++) {
             if (restaurants && restaurants[i].name.toLowerCase() === word.toLowerCase()) {
                 searchList.push(restaurants[i])
-                console.log(searchList)
             }
         }
 
@@ -63,7 +59,6 @@ function HomePage() {
     }
 
     const searchList = searchFilter.length && searchFilter.map((rest) => {
-        console.log(rest)
         return (
             <div onClick={() => verDetalhe(rest.id)} key={rest.id}>
                 <CardRestaurant

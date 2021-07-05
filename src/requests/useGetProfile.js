@@ -16,7 +16,7 @@ export function useGetProfile() {
                 setUserProfile(res.data.user)
             })
             .catch((err) => {
-                console.log(err.response)
+                alert(err.response.data.message)
             })
 
     }

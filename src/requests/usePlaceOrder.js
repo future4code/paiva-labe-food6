@@ -14,11 +14,10 @@ export const usePlaceOrder = (body) => {
         }
     }, body)
     .then((res) => {
-        console.log(res.data)
         setOrder(res.data)
     })
     .catch((err) => {
-        console.log(err)
+        alert(err.response.data.message)
     })
 }
     return{order, getPlaceOrder}

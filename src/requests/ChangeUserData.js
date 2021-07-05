@@ -11,11 +11,10 @@ export const setAddress = (body) => {
     }, body)
 
     .then((res) => {
-        console.log(res.data)
         localStorage.setItem("token", res.data)
     })
 
     .catch((err) => {
-        console.log(err.response.data)
+        alert(err.response.data.message)
     })
 }

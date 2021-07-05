@@ -8,7 +8,6 @@ function ModalComponent(props) {
   const [qntd, setQntd] = useState(1)
 
   const handleQntd = (event) => {
-    console.log(event.target.value)
     setQntd(event.target.value)
   }
 

@@ -107,7 +107,7 @@ function CardPage() {
     <CartArea>
       <TituloPage />
       <AddressCart profile = {userProfile} />
-      {cartList ? (
+      {cartList && localStorage.getItem("cart") ? (
         <div>
           <RestaurantCart id = {cart[0].resID} shippingPrice = {getShipping} />
           {cartList}

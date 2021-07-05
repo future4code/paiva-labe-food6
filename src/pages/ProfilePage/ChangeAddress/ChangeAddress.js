@@ -25,7 +25,7 @@ function ChangeAddress() {
         event.preventDefault()
         changeAdress(body, clear, history);
     }
-    console.log(body)
+    
     return (
 
         <div id="infoContainer">

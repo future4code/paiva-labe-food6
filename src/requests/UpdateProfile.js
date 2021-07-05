@@ -7,20 +7,18 @@ export const useUpdateProfile = () => {
     const [userData, setUserData] = useState({})
 
     const setProfile = (body, history) => {
-        console.log(body)
         axios.put(`${BASE_URL}/profile`, body, {
             headers: {
                 auth: token
             }
         })
             .then((res) => {
-                console.log(res.data.user)
                 alert("Dados alterados com sucesso !")
                 setUserData(res.data.user)
                 history.push("/perfil")
             })
             .catch((err) => {
-                console.log(err.response.data)
+                alert(err.response.data.message)
             })
     }
 

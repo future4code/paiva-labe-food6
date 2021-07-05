@@ -14,11 +14,10 @@ export const useGetRestaurantsDetails = () => {
         }
     })
     .then((res) => {
-        console.log(res.data)
         setRestaurantDetail(res.data)
     })
     .catch((err) => {
-        console.log(err)
+        alert(err.response.data.message)
     })
 }
     return{restaurantDetail, getRestaurantDetails}

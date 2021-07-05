@@ -3,8 +3,6 @@ import './ordercard.scss';
 
 function OrderCard({ order }) {
     const { restaurantName, totalPrice } = order
-    console.log(order)
-
 
     const dateConverter = (date) => {
         let dateNowConverter = new Date(date);

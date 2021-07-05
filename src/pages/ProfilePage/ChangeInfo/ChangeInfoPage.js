@@ -21,8 +21,6 @@ function ChangeInfoPage() {
     const { body, onChange, clear } = useForm({ name: "", email: "", cpf: "" })
     const { setProfile } = useUpdateProfile()
 
-    console.log(body)
-
     const onSubmitRegister = (event) => {
         event.preventDefault()
         setProfile(body, history)

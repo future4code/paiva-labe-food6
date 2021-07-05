@@ -14,11 +14,10 @@ export const useGetActiveOrder = () => {
             }
         })
             .then((res) => {
-                console.log(res.data)
                 setActiveOrder(res.data.order)
             })
             .catch((err) => {
-                console.log(err)
+                alert(err.response.data.message)
             })
     }
     return { activeOrder, getActiveOrder }

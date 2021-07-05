@@ -4,7 +4,6 @@ import { goToHome } from "../router/cordination"
 
 
 export const addAdress = (body, clear, history) => {
-    console.log(body)
 
     axios.put(`${BASE_URL}/address`, body, {
         headers: {
@@ -13,17 +12,15 @@ export const addAdress = (body, clear, history) => {
     })
         .then((res) => {
             localStorage.setItem("token", res.data.token)
-            console.log(res.data)
             goToHome(history)
             clear()
         })
         .catch((err) => {
-            console.log(err)
+            alert(err.response.data.message)
         })
 }
 
 export const changeAdress = (body, clear, history) => {
-    console.log(body)
 
     axios.put(`${BASE_URL}/address`, body, {
         headers: {
@@ -32,12 +29,11 @@ export const changeAdress = (body, clear, history) => {
     })
         .then((res) => {
             localStorage.setItem("token", res.data.token)
-            console.log(res.data)
             alert("endereço alterado com sucesso")
             history.push("/perfil")
             clear()
         })
         .catch((err) => {
-            console.log(err)
+            alert(err.response.data.message)
         })
 }

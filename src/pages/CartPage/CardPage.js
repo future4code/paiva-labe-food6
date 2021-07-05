@@ -106,8 +106,6 @@ function CardPage() {
     <CartArea>
       <TituloPage />
     
-      <AddressCart profile = {userProfile} />
-
       {userProfile && userProfile.id ? <AddressCart profile={userProfile} /> : <LoadingGif />}
 
       {cartList && localStorage.getItem("cart") ? (
@@ -132,8 +130,8 @@ function CardPage() {
         <div>
           <h2>Pedido Feito</h2>
           <h3>{activeOrder.restaurantName}</h3>
-          <p>Data de Pedido: {dateCreated}</p>
-          <p>Entrega: {dateExpire}</p>
+          {dateCreated && <p>Data de Pedido: {dateCreated}</p>}
+          {dateExpire && <p>Entrega: {dateExpire}</p>}
         </div>
       ) :
         "Carrinho Vazio"}

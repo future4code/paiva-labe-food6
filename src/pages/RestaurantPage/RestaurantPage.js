@@ -19,7 +19,6 @@ function RestaurantPage() {
         getRestaurantDetails(params.id)
     }, [])
 
-    console.log(restaurantDetail)
     const productsList = restaurantDetail.restaurant && restaurantDetail.restaurant.products.map((product) => {
         return (
 

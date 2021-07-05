@@ -50,5 +50,3 @@ Júlia Iziodório: Pagina Inicial, Login e Router
 Therge: Requisições
 
 Victor: Não fez entregas
-
-Survey:

@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
-import SearchIcon from '@material-ui/icons/Search';
 
 import { Container, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
@@ -13,16 +12,15 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
 import Footer from '../../components/Button/Footer';
-import useForm from '../../hooks/useForm';
 
 function HomePage() {
     useProtectedPage()
     const history = useHistory()
-    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
-    const { body, onChange } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
     const [searchFilter, setSearchFilter] = useState([])
     const [isFiltred, setFiltred] = useState(false)
+
+    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
 
     useEffect(() => {
         getRestaurants()
@@ -105,6 +103,7 @@ function HomePage() {
         <div>                           
 
             <TextField
+                placeholder = "&#128269; Pesquisar Restaurante"
                 type="text"
                 fullWidth
                 variant="outlined"

@@ -32,6 +32,9 @@ function RegisterPage() {
         cpf: "",
         password: "",
     })
+
+    console.log(body)
+
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
@@ -72,7 +75,7 @@ function RegisterPage() {
         }
     };
 
-
+ 
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />
@@ -119,7 +122,7 @@ function RegisterPage() {
                                     maxLength: 14,
                                     pattern: `([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})`,
                                 }}
-                                value={body.string}
+                                value={body.cpf}
                                 placeholder="000.000.000-00"
                                 onChange={onChange}
                                 required

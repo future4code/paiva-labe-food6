@@ -72,7 +72,7 @@ function RegisterPage() {
         }
     };
 
-    
+
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />
@@ -93,6 +93,7 @@ function RegisterPage() {
                             />
                         </FormControl>
                     </FormContainer>
+                    
                     <FormContainer>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">E-mail*</InputLabel>

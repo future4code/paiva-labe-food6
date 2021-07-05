@@ -14,23 +14,13 @@ const CardProduto = ({product,qntd,restaurantId}) => {
  
     const {cart,removeCart,activeOrder,getActiveOrder} = useContext(GlobalStateContext)
 
-
-    let valor = price.toString().replace(".",",")
-
-    if(valor.search(",") < 0){ //Adiciona ,00 aos valores sem decimal
-        valor = valor + ",00"
-    }else{
-        valor = valor + "0" //Adiciona 0 aos valores com decimal
-    }
-
     const closeButton = () => {
         setOpen(false)
     }
 
-
     useEffect(() => {
         getActiveOrder()
-
+        closeButton()
     }, [cart])
 
     function checkCartRes(){
@@ -43,12 +33,12 @@ const CardProduto = ({product,qntd,restaurantId}) => {
     }
 
     function inCart(){
-        for (let i = 0;i < cart.length; i++){
-
+        const valor = cart.length
+        for (let i = 0;i < valor; i++){
             if(cart[i].product.id === id){
                 return(true)
-            }else{
-                return(false)
+            }else if (cart[i] && cart[i].product.id === restaurantId){
+               return(false)
             }
         }
 
@@ -69,7 +59,7 @@ const CardProduto = ({product,qntd,restaurantId}) => {
                     <Description>{description}</Description>
 
                     <AddProduct>
-                        <Price>R${valor}</Price>
+                        <Price>{price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</Price>
 
                         <div>
                             {checkCartRes() ? (

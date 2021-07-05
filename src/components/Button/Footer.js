@@ -33,9 +33,6 @@ function Footer() {
                 onClick={() => gotoProfile(history)} />
 
         </FooterContainer>
-        
-            
-
 
     )
 }

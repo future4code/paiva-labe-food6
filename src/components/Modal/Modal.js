@@ -1,25 +1,32 @@
 import React, { useContext, useState } from "react"
 import { GlobalStateContext } from "../../globalstate/GlobalStateContext"
 import OptionQntd from "../FileInput/OptionQnt"
-import { ModalBody } from "./styled"
+import { CloseButton, ContentModal, ModalBody, SelectModal,CloseArea,BuyButton } from "./styled"
 
 function ModalComponent(props) {
   const {makeCart} = useContext(GlobalStateContext)
   const [qntd, setQntd] = useState(1)
 
   const handleQntd = (event) => {
-    console.log(event.target.value)
     setQntd(event.target.value)
   }
+  
 
   return (
       <ModalBody>
-        <button onClick = {props.close}>x</button>
-        <h2 id="simple-modal-title">Selecione a quantidade desejada</h2>
-        <select onChange = {handleQntd}>
-          <OptionQntd/>
-        </select>
-        <button onClick = {() => makeCart(props.product,qntd,props.resID)} >Adicionar ao Carrinho</button>
+
+        <CloseArea>
+          <CloseButton onClick = {props.close}>x</CloseButton>
+        </CloseArea>
+
+        <ContentModal>
+          <h2 id="simple-modal-title">Selecione a quantidade desejada</h2>
+          <SelectModal onChange = {handleQntd}>
+            <OptionQntd/>
+          </SelectModal>
+          <BuyButton onClick = {() => {makeCart(props.product,qntd,props.resID)}} >Adicionar ao Carrinho</BuyButton>
+        </ContentModal>
+
     </ModalBody>
   )
 }

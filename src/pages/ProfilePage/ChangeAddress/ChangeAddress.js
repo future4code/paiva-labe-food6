@@ -9,21 +9,22 @@ import HeaderRestaurant from "../../../components/Header/HeaderRestaurant"
 import {FormContainer} from "../../RegisterPage/styled"
 
 
-function ChangeAddress() {
+
+function ChangeAddress() {   
 
     useProtectedPage()
     const { body, onChange, clear } = useForm({ street: "", neighbourhood: "", number: "", complement: "", city: "", state: "" })
 
     const onSubmitChangeAddress = (event) => {
         event.preventDefault()
-        changeAdress(body, clear);
+        changeAdress(body, clear, history);
     }
-    console.log(body)
+    
     return (
+
         <div>
             <HeaderRestaurant />
-
-            <main>
+                 <main>
                 <form onSubmit={onSubmitChangeAddress}>
                     <FormContainer>
                         <TextInput
@@ -80,8 +81,8 @@ function ChangeAddress() {
                         />
                     </FormContainer>
 
-
                     <Button type="submit">Enviar</Button>
+
                 </form>
             </main>
         </div>

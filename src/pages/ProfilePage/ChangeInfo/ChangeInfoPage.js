@@ -14,14 +14,13 @@ function ChangeInfoPage() {
     const { body, onChange, clear } = useForm({ name: "", email: "", cpf: "" })
     const { setProfile } = useUpdateProfile()
 
-    console.log(body)
-
     const onSubmitRegister = (event) => {
         event.preventDefault()
-        setProfile(body)
+        setProfile(body, history)
         clear()
     }
     return (
+
         <div>
             <HeaderRestaurant />
 
@@ -54,8 +53,7 @@ function ChangeInfoPage() {
                             label="CPF"
                             onChange={onChange}
                         />
-                    </FormContainer>
-
+                    </FormContainer>         
 
                     <Button type="submit">Salvar</Button>
                 </form>

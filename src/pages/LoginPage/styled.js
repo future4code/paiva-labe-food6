@@ -4,7 +4,6 @@ export const Main = styled.main`
 display:flex;
 justify-content:center;
 text-align:center;
-width:80vw;
 margin:auto;
 height:100vh;
 border-radius: 10px;
@@ -13,7 +12,7 @@ export const FormContainer = styled.div`
    display:flex;
     flex-direction: column;    
     margin:auto;  
-    width:100vw;
+    width:100%;
   
   
 form{

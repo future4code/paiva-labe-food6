@@ -9,6 +9,8 @@ import { goToChangeAddress, goToUpdateInfo } from '../../router/cordination';
 import './profilepage.scss';
 import { useGetOrderHistory } from '../../requests/useGetOrderHistory';
 import HeaderRestaurant from "../../components/Header/HeaderRestaurant"
+import LoadingGif from '../../components/LoadingGif/LoadingGif';
+
 
 function ProfilePage() {
     useProtectedPage()
@@ -20,8 +22,6 @@ function ProfilePage() {
         getProfile()
         getOrder()
     }, [])
-
-    console.log(orderHistory)
 
     const history = useHistory()
 
@@ -54,11 +54,11 @@ function ProfilePage() {
                     <div style={{ width: "100%", borderBottom: "1px solid black" }} />
 
                     {orderHistory && orderHistory[0] && orderHistory[0].restaurantName ? orderHistory.map((order) => {
-                        return <OrderCard order={order} />
+                        return <OrderCard order={order} key={order.expiredAt}/>
                     }) : <p style={{ textAlign: "center", padding: "20px 0" }}>Você não realizou nenhum pedido</p>}
 
                 </div>
-            ) : <p>carregando</p>}
+            ) : <LoadingGif />}
 
             <Footer history={history} />
 

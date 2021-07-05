@@ -11,24 +11,21 @@ import useForm from '../../hooks/useForm';
 import { useContext, useEffect, useState } from 'react';
 
 
-
 function HomePage() {
     const history = useHistory()
-
+    
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
     const { body } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
-
     const [isFiltred, setFiltred] = useState(false)
     useProtectedPage()
 
+    const { restaurants, getRestaurants } = useContext(GlobalStateContext)
 
     useEffect(() => {
         getRestaurants()
     }, [])
 
-
-    console.log(body)
 
     const verDetalhe = (id) => {
         gotoRest(history, id)
@@ -44,6 +41,32 @@ function HomePage() {
             return true
         })
     }
+
+    
+    const getSearched = (event) => {
+        
+        const searchList = []
+        const word = event.target.value
+        for (let i = 0; i < restaurants.length; i++) {
+            if (restaurants && restaurants[i].name.toLowerCase() === word.toLowerCase()) {
+                searchList.push(restaurants[i])
+            }
+        }
+
+        setSearchFilter(searchList)
+
+    }
+
+    const searchList = searchFilter.length && searchFilter.map((rest) => {
+        return (
+            <div onClick={() => verDetalhe(rest.id)} key={rest.id}>
+                <CardRestaurant
+                    restaurants={rest}
+                />
+
+            </div>
+        )
+    })
 
     const restaurantFilter = itensInFilter.length && itensInFilter.map((item) => {
         return (
@@ -74,15 +97,21 @@ function HomePage() {
 
     if (!restaurants[0].logoUrl) {
         return (
-
             <HomeInitial />
         )
     }
-
+    
     return (
+        <div>                         
 
-        <div>
-
+            <TextField
+                placeholder = "&#128269; Pesquisar Restaurante"
+                type="text"
+                fullWidth
+                variant="outlined"
+                name="search"
+                onChange={getSearched}
+            />
            
 
             <Filter>
@@ -92,9 +121,10 @@ function HomePage() {
                 })}
             </Filter>
 
-
             <Container>
-                {isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>}
+                {searchFilter.length > 0 ? searchList:
+                isFiltred ? <div style={{ width: "95%", margin: "0 auto" }}>{restaurantFilter}</div> : <div style={{ width: "95%", margin: "0 auto" }}>{showRestaurants}</div>
+                }
             </Container>
 
             <Footer

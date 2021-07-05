@@ -36,6 +36,7 @@ Não funciona:
 -Verificação de CPF
 
 -Mascara de CPF
+
 Participantes:
 
 Silvio Dias: Pagina de Restaurante, Card de Restaurante e Produto, Algoritmo e Pagina de Carrinho, filtro de pesquisa, pedido em andamento, modal, layout de modal, navbar, Global Context

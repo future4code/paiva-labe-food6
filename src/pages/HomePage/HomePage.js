@@ -1,8 +1,10 @@
 
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
+
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
+
 import { Container, Filter } from './styled';
 import { gotoRest } from '../../router/cordination';
 import { useHistory } from 'react-router-dom';
@@ -69,6 +71,10 @@ function HomePage() {
     })
 
 
+    if(!restaurants[0].logoUrl){
+        return(
+
+
 
 
 
@@ -106,12 +112,14 @@ function HomePage() {
 
     if (!restaurants[0].logoUrl) {
         return (
+
             <HomeInitial />
         )
     }
 
     return (
-        <div>
+
+        <div>                           
 
             <TextField
                 type="text"
@@ -121,6 +129,7 @@ function HomePage() {
                 onChange={onChange}
                 value={body.search}
             />
+
 
             <Filter>
                 <p onClick={() => setFiltred(false)}>Tudo</p>

@@ -6,14 +6,15 @@ import { useUpdateProfile } from '../../../requests/UpdateProfile';
 import { Button } from '../../../components/Button/Button';
 import './info.scss';
 import HeaderRestaurant from "../../../components/Header/HeaderRestaurant"
-import {FormContainer} from "../../RegisterPage/styled"
+import { FormContainer } from "../../RegisterPage/styled"
+import { useHistory } from 'react-router-dom';
 
 
 function ChangeInfoPage() {
     useProtectedPage()
     const { body, onChange, clear } = useForm({ name: "", email: "", cpf: "" })
     const { setProfile } = useUpdateProfile()
-
+    const history = useHistory()
     const onSubmitRegister = (event) => {
         event.preventDefault()
         setProfile(body, history)
@@ -25,8 +26,8 @@ function ChangeInfoPage() {
             <HeaderRestaurant />
 
             <main>
-                
-                    <form onSubmit={onSubmitRegister}>
+
+                <form onSubmit={onSubmitRegister}>
                     <FormContainer>
                         <TextInput
                             type="text"
@@ -53,7 +54,7 @@ function ChangeInfoPage() {
                             label="CPF"
                             onChange={onChange}
                         />
-                    </FormContainer>         
+                    </FormContainer>
 
                     <Button type="submit">Salvar</Button>
                 </form>

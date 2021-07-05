@@ -6,25 +6,26 @@ import { Button } from '../../../components/Button/Button';
 import { changeAdress } from '../../../requests/PutAddAdress';
 import './address.scss';
 import HeaderRestaurant from "../../../components/Header/HeaderRestaurant"
-import {FormContainer} from "../../RegisterPage/styled"
+import { FormContainer } from "../../RegisterPage/styled"
+import { useHistory } from 'react-router-dom';
 
 
 
-function ChangeAddress() {   
+function ChangeAddress() {
 
     useProtectedPage()
     const { body, onChange, clear } = useForm({ street: "", neighbourhood: "", number: "", complement: "", city: "", state: "" })
-
+    const history = useHistory()
     const onSubmitChangeAddress = (event) => {
         event.preventDefault()
         changeAdress(body, clear, history);
     }
-    
+
     return (
 
         <div>
             <HeaderRestaurant />
-                 <main>
+            <main>
                 <form onSubmit={onSubmitChangeAddress}>
                     <FormContainer>
                         <TextInput

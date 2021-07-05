@@ -32,6 +32,11 @@ export const gotoRest = (history, id) => {
     history.push(`/restaurante/${id}`)
 }
 
+
+//export const gotoBack = (history) => {
+  //  history.back()
+//}
+
 export const gotoBack = (history) => {
     history.goBack()
 }

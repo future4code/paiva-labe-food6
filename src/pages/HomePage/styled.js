@@ -46,9 +46,14 @@ p {
     margin: 0 1px;
     font-size: 1.2rem;
     font-weight: 800;
-
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
     :hover {
-        opacity: 0.5;
+        color:#5cb646;
+    }
+
+    :visited{
+        color:#5cb646;
     }
 }
 `

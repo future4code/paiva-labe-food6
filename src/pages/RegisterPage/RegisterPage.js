@@ -72,6 +72,7 @@ function RegisterPage() {
         }
     };
 
+
     return (
         <PageRegister>
             <img src={logo} alt="Future Eats" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FooterContainer, IconImg } from './style'
-import { gotoProfile, goToHome, gotoCart } from "../../router/cordination"
+import { gotoProfile, goToHome, gotoCart } from "../../router/cordination";
 import { useHistory } from "react-router-dom";
 import home from '../../Assets/home_cinza.svg'
 import cart from '../../Assets/cart_cinza.svg'
@@ -10,17 +10,17 @@ import cartGreen from '../../Assets/cart_verde.svg'
 import avatarGreen from '../../Assets/avatar_verde.svg'
 
 
+
+
 function Footer() {
     const history = useHistory();
-
-
 
     return (
 
 
         <FooterContainer>
 
-            <IconImg src={history.location.pathname === "/" ? homeGreen : home}
+            <IconImg src={history.location.pathname === "/pagina-inicial" ? homeGreen : home}
                 alt="home"
                 onClick={() => goToHome(history)} />
 
@@ -33,9 +33,6 @@ function Footer() {
                 onClick={() => gotoProfile(history)} />
 
         </FooterContainer>
-
-
-
 
     )
 }

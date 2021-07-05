@@ -1,24 +1,18 @@
 import React from 'react'
-import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
 import useProtectedPage from '../../../hooks/useProtectedPage';
 import useForm from '../../../hooks/useForm';
-import { useHistory } from 'react-router-dom';
-import { gotoBack } from '../../../router/cordination';
 import TextInput from '../../../components/TextInput/TextInput';
 import { Button } from '../../../components/Button/Button';
 import { changeAdress } from '../../../requests/PutAddAdress';
 import './address.scss';
-import { FormContainer } from '../../LoginPage/styled';
-import { FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
-import clsx from "clsx";
-import { useStyles } from '../../../components/FileInput/FileInput';
+import HeaderRestaurant from "../../../components/Header/HeaderRestaurant"
+import {FormContainer} from "../../RegisterPage/styled"
 
 
-function ChangeAddress() {
-    const classes = useStyles();
+
+function ChangeAddress() {   
 
     useProtectedPage()
-    const history = useHistory()
     const { body, onChange, clear } = useForm({ street: "", neighbourhood: "", number: "", complement: "", city: "", state: "" })
 
     const onSubmitChangeAddress = (event) => {
@@ -28,116 +22,67 @@ function ChangeAddress() {
     
     return (
 
-        <div id="infoContainer">
-            <header>
-                <div>
-                    <ArrowBackIosSharpIcon onClick={() => gotoBack(history)} />
-                    <h2>Endereço</h2>
-                </div>
-
-            </header>
-
-            <main>
+        <div>
+            <HeaderRestaurant />
+                 <main>
                 <form onSubmit={onSubmitChangeAddress}>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="street"
+                            value={body.street}
+                            label="Logradouro"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="number"
+                            name="number"
+                            value={body.number}
+                            label="Número"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="neighbourhood"
+                            value={body.neighbourhood}
+                            label="Bairro"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="complement"
+                            value={body.complement}
+                            label="Complemento"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="city"
+                            value={body.city}
+                            label="Cidade"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
+                    <FormContainer>
+                        <TextInput
+                            type="text"
+                            name="state"
+                            value={body.state}
+                            label="Estado"
+                            onChange={onChange}
+                        />
+                    </FormContainer>
 
-                    <div className="divAlign">
+                    <Button type="submit">Enviar</Button>
 
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Logradouro</InputLabel>
-                                <OutlinedInput
-                                    type="text"
-                                    name="street"
-                                    value={body.street}
-                                    placeholder="Logradouro"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-
-
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Numero</InputLabel>
-                                <OutlinedInput
-                                    type="number"
-                                    name="number"
-                                    value={body.number}
-                                    placeholder="Número"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Complemento</InputLabel>
-                                <OutlinedInput
-                                    type="text"
-                                    name="complement"
-                                    value={body.complement}
-                                    placeholder="Complemento"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-
-
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Bairro</InputLabel>
-                                <OutlinedInput
-                                    type="text"
-                                    name="neighbourhood"
-                                    value={body.neighbourhood}
-                                    placeholder="usuario@dominio.com"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Cidade</InputLabel>
-                                <OutlinedInput
-                                    type="text"
-                                    name="city"
-                                    value={body.city}
-                                    placeholder="cidade"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-                        <FormContainer>
-                            <FormControl className={clsx(classes.margin)} variant="outlined">
-                                <InputLabel>Estado</InputLabel>
-                                <OutlinedInput
-                                    type="text"
-                                    name="state"
-                                    value={body.state}
-                                    placeholder="Estado"
-                                    onChange={onChange}
-                                    required
-                                    labelWidth={100}
-                                />
-                            </FormControl>
-                        </FormContainer>
-
-                        <Button type="submit">Enviar</Button>
-                    </div>
                 </form>
             </main>
         </div>

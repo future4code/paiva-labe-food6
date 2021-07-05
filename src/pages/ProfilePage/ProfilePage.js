@@ -8,7 +8,9 @@ import Footer from '../../components/Button/Footer';
 import { goToChangeAddress, goToUpdateInfo } from '../../router/cordination';
 import './profilepage.scss';
 import { useGetOrderHistory } from '../../requests/useGetOrderHistory';
+import HeaderRestaurant from "../../components/Header/HeaderRestaurant"
 import LoadingGif from '../../components/LoadingGif/LoadingGif';
+
 
 function ProfilePage() {
     useProtectedPage()
@@ -24,10 +26,10 @@ function ProfilePage() {
     const history = useHistory()
 
     return (
+        
         <div id="profileContainer">
-            <header>
-                <h2>Meu Perfil</h2>
-            </header>
+            <HeaderRestaurant />
+
             {userProfile && userProfile.name ? (
                 <div className="profileAlign">
                     <section className="userInfo">

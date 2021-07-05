@@ -26,14 +26,6 @@ export const useStyles = makeStyles((theme) => ({
 
 export default function InputAdornments() {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-    });
-
    
     return (
         <div className={classes.root}>

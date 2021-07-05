@@ -7,16 +7,12 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import CardRestaurant from '../../components/Card/CardRes';
 import HomeInitial from './HomeInitial';
 import Footer from '../../components/Button/Footer';
-import useForm from '../../hooks/useForm';
 import { useContext, useEffect, useState } from 'react';
 import { TextField } from '@material-ui/core';
 
-
 function HomePage() {
     const history = useHistory()
-
     const { restaurants, getRestaurants } = useContext(GlobalStateContext)
-    const { body } = useForm({ search: "" })
     const [itensInFilter, setItensInFilter] = useState([])
     const [searchFilter, setSearchFilter] = useState([])
     const [isFiltred, setFiltred] = useState(false)
@@ -32,7 +28,6 @@ function HomePage() {
     }
 
     const chooseFilter = (category) => {
-
         restaurants.filter(choosed => {
             if (choosed.category === category) {
                 setItensInFilter([choosed])
@@ -41,7 +36,6 @@ function HomePage() {
             return true
         })
     }
-
 
     const getSearched = (event) => {
 
@@ -52,9 +46,7 @@ function HomePage() {
                 searchList.push(restaurants[i])
             }
         }
-
         setSearchFilter(searchList)
-
     }
 
     const searchList = searchFilter.length && searchFilter.map((rest) => {
@@ -92,8 +84,6 @@ function HomePage() {
             </div>
         )
     })
-
-
 
     if (!restaurants[0].logoUrl) {
         return (

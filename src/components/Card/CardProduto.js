@@ -20,7 +20,7 @@ const CardProduto = ({product,qntd,restaurantId}) => {
 
     useEffect(() => {
         getActiveOrder()
-
+        closeButton()
     }, [cart])
 
     function checkCartRes(){

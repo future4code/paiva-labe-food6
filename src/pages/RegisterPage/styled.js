@@ -23,10 +23,7 @@ export const PageRegister = styled.div`
 export const FormContainer = styled.div` 
 @media(max-width: 600px) {
     display:flex;
-    flex-direction: column; 
-    padding: 8px;   
-    
-       
+    flex-direction: column;    
 
     input {
         

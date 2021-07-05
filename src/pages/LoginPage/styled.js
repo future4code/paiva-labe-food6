@@ -4,7 +4,6 @@ export const Main = styled.main`
 display:flex;
 justify-content:center;
 text-align:center;
-width:80vw;
 margin:auto;
 height:100vh;
 border-radius: 10px;

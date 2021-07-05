@@ -10,6 +10,7 @@ function ModalComponent(props) {
   const handleQntd = (event) => {
     setQntd(event.target.value)
   }
+  
 
   return (
       <ModalBody>
@@ -23,7 +24,7 @@ function ModalComponent(props) {
           <SelectModal onChange = {handleQntd}>
             <OptionQntd/>
           </SelectModal>
-          <BuyButton onClick = {() => makeCart(props.product,qntd,props.resID)} >Adicionar ao Carrinho</BuyButton>
+          <BuyButton onClick = {() => {makeCart(props.product,qntd,props.resID)}} >Adicionar ao Carrinho</BuyButton>
         </ContentModal>
 
     </ModalBody>

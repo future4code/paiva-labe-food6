@@ -2,7 +2,7 @@ import React from 'react';
 import './ordercard.scss';
 
 function OrderCard({ order }) {
-    const { createdAt, restaurantName, totalPrice } = order
+    const { restaurantName, totalPrice } = order
     console.log(order)
 
 
@@ -15,7 +15,7 @@ function OrderCard({ order }) {
         <div id="orderContainer">
             <div className="orderCard">
                 <h2>{restaurantName}</h2>
-                <p>{dateConverter(createdAt)}</p>
+                <p>{dateConverter(order.createdAt)}</p>
                 <h3><strong>SUBTOTAL {totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></h3>
             </div>
         </div>

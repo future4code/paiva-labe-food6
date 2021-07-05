@@ -11,13 +11,10 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { useStyles } from "../../components/FileInput/FileInput";
-import useProtectedPage from '../../hooks/useProtectedPage';
+import { SignUpRequest } from '../../requests/AccessApp';
+
 import clsx from "clsx";
-import { gotoAddress } from '../../router/cordination';
-
-
 function RegisterPage() {
-    useProtectedPage()
     const classes = useStyles();
     const [isValidPassword, setIsValidPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -67,8 +64,9 @@ function RegisterPage() {
         event.preventDefault();
         
         if (body.password === confirmPassword) {
-            setIsValidPassword(false);           
-            gotoAddress(history)
+            setIsValidPassword(false);   
+            SignUpRequest(body, history)        
+       
             } else {
             alert("Senhas incompatíveis");
         }

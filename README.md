@@ -1,7 +1,7 @@
-# FutureEatsB
-## https://paiva-labefood6.surge.sh/
+# <a href="https://paiva-labefood6.surge.sh/">FutureEatsB</a>
 
-Funcionando:
+
+## Funcionando:
 
 -Login
 
